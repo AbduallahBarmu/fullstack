@@ -34,13 +34,13 @@ export class AllProductsComponent implements OnInit {
 
 
 
-  // async getCategories() {
-  //   this.loading = true
-  //   this.products = await this.service.getAllCategories()
+  async getCategories() {
+    this.loading = true
+    this.products = await this.service.getAllCategories()
 
-  //   this.loading = false
+    this.loading = false
 
-  // }
+  }
 
 
  
@@ -52,12 +52,12 @@ export class AllProductsComponent implements OnInit {
 
 
 
-  // async getProductsCategory(keyword:string) {
-  //   this.loading = true
-  //  this.products = await this.service.getProductsByCategory(keyword)
-  //     this.loading = false
+  async getProductsCategory(keyword:string) {
+    this.loading = true
+   this.products = await this.service.getProductsByCategory(keyword)
+      this.loading = false
    
-  // }
+  }
 
 
 
