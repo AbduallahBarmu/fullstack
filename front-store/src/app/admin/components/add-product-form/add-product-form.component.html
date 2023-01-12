@@ -1,0 +1,31 @@
+
+
+
+<h1>Add Product Form </h1> 
+<form class="cf" (ngSubmit)="addProduct(form.value)" #form="ngForm">
+  <div class="half left cf">
+    <input type="text" id="input-name" placeholder="Name" ngModel name ="name" [(ngModel)]="data.name">
+    <input type="text" id="input-region" placeholder="Region" ngModel name ="region"[(ngModel)]="data.region">
+    <input type="number" id="input-price" placeholder="Price" ngModel name ="price"[(ngModel)]="data.price">
+  </div>
+  <div class="half right cf">
+    <textarea name="description" type="text" id="input-description" placeholder="Description" 
+     ngModel name="description" [(ngModel)]="data.description"></textarea>
+  </div>  
+  <input type="submit" value="Submit" id="input-submit" >
+</form>
+
+<!-- 
+<form class="cf" >
+  <div class="half left cf">
+    <input type="text" id="input-name" placeholder="Name"  name ="name" >
+    <input type="text" id="input-region" placeholder="Region"  name ="region">
+    <input type="number" id="input-price" placeholder="Price"  name ="price">
+  </div>
+  <div class="half right cf">
+    <textarea name="description" type="text" id="input-description" placeholder="Description" 
+      name="description"></textarea>
+  </div>  
+  <input type="submit" value="Submit" id="input-submit" >
+</form> -->
+

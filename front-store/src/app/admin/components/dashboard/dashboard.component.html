@@ -1,0 +1,41 @@
+<div class="demo-button-container">
+  <button
+    mat-raised-button
+    class="add-button"
+    data-toggle="modal"
+    data-target="#viewCart"
+    routerLink="/addform/"
+  >
+    Add Product
+  </button>
+</div>
+<table id="customers">
+  <thead>
+    <tr>
+      <th>Product Name</th>
+      <th>Region</th>
+      <th>Price</th>
+      <th>Operation</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of products">
+      <td>{{ item.name }}</td>
+      <td>{{ item.region }}</td>
+      <td>{{ item.price }}</td>
+      <td>
+        <button
+          class="delete-btn"
+          type="button"
+          (click)="deleteProduct(item._id)"
+        >
+          <span> Delete</span>
+        </button>
+        <button class="edit-btn" type="button"  routerLink="/updateProduct/{{item._id }}" >Edit</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+<!--  (click)="updatideProduct()"  -->
