@@ -7,10 +7,12 @@ import { ProductsModule } from './products/products.module';
 
 // DB 
 import { MongooseModule } from '@nestjs/mongoose';
+import { AuthModule } from './admin/login/auth/auth.module';
+import { AdminModule } from './admin/login/admin/admin.module';
 import config from './config/keys'
 
 @Module({
-  imports: [ProductsModule , MongooseModule.forRoot(config.mongoURI)],
+  imports: [ProductsModule , MongooseModule.forRoot(config.mongoURI), AuthModule, AdminModule],
   controllers: [AppController, ProductsController],
   providers: [AppService],
 })
