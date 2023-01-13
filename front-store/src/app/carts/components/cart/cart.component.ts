@@ -10,7 +10,7 @@ import { CartsService } from '../../services/carts.service';
 
 
 export class CartComponent implements OnInit {
-  constructor(private  service:CartsService) { } 
+  constructor(private service:CartsService) { } 
 
 
 
@@ -55,7 +55,9 @@ export class CartComponent implements OnInit {
     this.cartProducts = []
     this.getCartTotal()
     localStorage.setItem("cart" , JSON.stringify(this.cartProducts))
+    // console.log("cart ",this.cartProducts)
   }
+
 
   getCartTotal() {
     this.total = 0

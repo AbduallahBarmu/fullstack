@@ -26,8 +26,8 @@ import { Document } from 'mongoose';
 export type ProductDocument = Product & Document;
 export declare class Product {
     name: String;
-    description: String;
-    price: Number;
     region: String;
+    price: Number;
+    description: String;
 }
 export declare const productSchema: import("mongoose").Schema<Product, import("mongoose").Model<Product, any, any, any, any>, {}, {}, {}, {}, import("mongoose").DefaultSchemaOptions, Product>;

@@ -55,3 +55,13 @@ push from array ==> midell ware storage then ==> local storage
 
 // delete bootstrab 
 // use promisess rx.js
+
+
+
+## taks 
+- clear add form after updating 
+- add validation on the form (do not submit if there is no data )
+- redirect admin to the dashbord page after submiting 
+- solve cart problem (only acceeping one product in the cart page )
+- display products in the home page 
+- add image to the products also in DB 

@@ -20,7 +20,7 @@ __decorate([
 __decorate([
     (0, mongoose_1.Prop)(),
     __metadata("design:type", String)
-], Product.prototype, "description", void 0);
+], Product.prototype, "region", void 0);
 __decorate([
     (0, mongoose_1.Prop)(),
     __metadata("design:type", Number)
@@ -28,7 +28,7 @@ __decorate([
 __decorate([
     (0, mongoose_1.Prop)(),
     __metadata("design:type", String)
-], Product.prototype, "region", void 0);
+], Product.prototype, "description", void 0);
 Product = __decorate([
     (0, mongoose_1.Schema)()
 ], Product);

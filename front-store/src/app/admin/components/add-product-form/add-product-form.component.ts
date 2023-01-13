@@ -1,10 +1,12 @@
-import { Component, Input } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { Component } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Product } from '../../../products/models/productModels';
+// services
 import { AdminService } from '../../admin.service';
 import { ProductsService } from 'src/app/products/services/products.service';
+
 import { FormGroup } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-add-product-form',
@@ -12,7 +14,7 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./add-product-form.component.scss'],
 })
 export class AddProductFormComponent {
-  products: Product[] = []; // interface
+  products: Product[] = []; // Interface
   data: any = {};
   form!: FormGroup;
   id: any;
@@ -24,37 +26,23 @@ export class AddProductFormComponent {
   ) {}
 
   async ngOnInit() {
-    // this.form = new FormGroup();
-
+    // this root is to get product id by using params
     this.id = this.route.snapshot.paramMap.get('id');
-
+    // get the data and check if there is an ID  give me the data of this ID(Edit method) if not return an empty object (Add method)
     this.data = this.id ? await this.service.getProductByIdServ(this.id) : {};
   }
-
-
 
   async addProduct(form: NgForm) {
     console.log(' product submitted', form);
     if (this.id) {
-      await this.adminService.updateProductServ(this.id , form);
+      // in case there is an ID means we have data in the form so, lets update it
+      await this.adminService.updateProductServ(this.id, form);
+      alert('Great !! The product Updated successfully');
     } else {
+      // in case there is no ID means the form is empty and we will create new product
       this.products = await this.adminService.createProductServ(form);
+      this.form.reset();
+      alert('Great !! The product Added successfully');
     }
-    alert('Great !! The product add successfully');
   }
-
-
-  
-  // getProductById() {
-  //    this.service.getProductByIdServ(this.id).subscribe((res: any) => {
-  //     console.log('res',res)
-  //    this.data = res
-  //    console.log(this.data)
-  //   });
-
-  // }
-  //   async getProductById() {
-  //    this.data=  await this.service.getProductByIdServ(this.id)
-
-  //  }
 }
