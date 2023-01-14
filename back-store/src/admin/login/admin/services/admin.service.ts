@@ -10,12 +10,12 @@ export class AdminService {
         {
             adminId:1, 
             username:'abduallah', 
-            passwrord:'12345A'
+            password:'12345A'
         },
         {
             adminId:2, 
             username:'taha', 
-            passwrord:'12345T'
+            password:'12345T'
         },
     ]
 

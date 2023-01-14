@@ -36,6 +36,7 @@ export class ProductsController {
   createProduct(@Body() createItemDto: CreateProdcutsDto): Promise<Product> {
     return this.productsService.create(createItemDto);
   }
+  
 
   // delete the product by ID
   @Delete(':id')

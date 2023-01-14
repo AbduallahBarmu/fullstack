@@ -1,4 +1,7 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Request, Post,Get, UseGuards } from '@nestjs/common';
+import { AuthGuard } from '@nestjs/passport';
+
+
 import { AppService } from './app.service';
 
 @Controller()
@@ -9,7 +12,20 @@ export class AppController {
   getHello(): string {
     return this.appService.getHello();
   }
-}
 
-//  Controllers are responsible for handling incoming [requests] and returning [responses] to the client
 
+    @UseGuards(AuthGuard('local'))
+    @Post('auth/login')
+    async login(@Request() req) {
+        return req.user;
+      }
+ 
+    @Post('something')
+    handleSomething() {
+        return {msg:'this is somthing'};
+      }
+  
+    }
+  
+  
+  
