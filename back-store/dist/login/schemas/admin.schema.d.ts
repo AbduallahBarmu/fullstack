@@ -26,7 +26,7 @@ import { Document } from "mongoose";
 export type AdminDocument = Admin & Document;
 export declare class Admin {
     id: string;
-    username: string;
+    email: string;
     password: string;
 }
 export declare const adminSchema: import("mongoose").Schema<Admin, import("mongoose").Model<Admin, any, any, any, any>, {}, {}, {}, {}, import("mongoose").DefaultSchemaOptions, Admin>;
