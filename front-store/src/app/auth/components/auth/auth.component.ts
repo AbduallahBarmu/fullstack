@@ -6,5 +6,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./auth.component.scss']
 })
 export class AuthComponent {
-
+  isLoginMode = true ; 
+  
+  onSwitchMode(){
+    // this.isLoginMode = false
+    this.isLoginMode = !this.isLoginMode
+  }
 }

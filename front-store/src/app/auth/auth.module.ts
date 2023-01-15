@@ -6,7 +6,7 @@ import { AuthComponent } from './components/auth/auth.component';
 
 @NgModule({
   declarations: [
-    AuthComponent
+    
   ],
   imports: [
     CommonModule, SharedModule
