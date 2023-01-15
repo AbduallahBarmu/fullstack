@@ -18,7 +18,7 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
 import {MatTable} from '@angular/material/table';
-
+import {MatFormFieldModule} from '@angular/material/form-field';
 
 @NgModule({
   declarations: [
@@ -39,6 +39,7 @@ import {MatTable} from '@angular/material/table';
     MatButtonModule,
     MatIconModule,
     MatToolbarModule,
+    MatFormFieldModule
    
   
   ],

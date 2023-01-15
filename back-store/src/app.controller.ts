@@ -1,8 +1,9 @@
 import { Controller, Request, Post,Get, UseGuards } from '@nestjs/common';
-import { AuthGuard } from '@nestjs/passport';
-
-
 import { AppService } from './app.service';
+import { AuthGuard } from '@nestjs/passport';
+import {JwtAuthGuard} from './login/auth/guards/jwt-auth.guard'
+import { LocalAuthGuard } from './login/auth/guards/local-auth.guard';
+
 
 @Controller()
 export class AppController {
@@ -14,15 +15,16 @@ export class AppController {
   }
 
 
-    @UseGuards(AuthGuard('local'))
+    @UseGuards(LocalAuthGuard)
     @Post('auth/login')
     async login(@Request() req) {
-        return req.user;
+        return req.user
       }
  
-    @Post('something')
-    handleSomething() {
-        return {msg:'this is somthing'};
+      @UseGuards(JwtAuthGuard)
+      @Get('profile')
+      getProfile(@Request() req) {
+        return req.user;
       }
   
     }
