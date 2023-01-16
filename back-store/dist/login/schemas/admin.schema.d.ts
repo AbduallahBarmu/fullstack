@@ -26,6 +26,7 @@ import { Document } from "mongoose";
 export type AdminDocument = Admin & Document;
 export declare class Admin {
     id: string;
+    username: string;
     email: string;
     password: string;
 }

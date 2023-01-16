@@ -1,28 +1,20 @@
 import { Injectable } from '@nestjs/common';
+// DB
+import { Model } from 'mongoose';
+import { InjectModel } from '@nestjs/mongoose';
 
-
-export type Admin = any; 
-
+import { Admin } from '../../schemas/admin.schema';
 
 @Injectable()
 export class AdminService {
-    private readonly admins = [
-        {
-            adminId:1, 
-            username:'abduallah', 
-            password:'12345A'
-        },
-        {
-            adminId:2, 
-            username:'taha', 
-            password:'12345T'
-        },
-    ]
+  constructor(
+    @InjectModel(Admin.name) private readonly adminModel: Model<Admin>,
+  ) {}
 
-    async findOne(username:string):Promise<Admin | undefined>{  
-        return this.admins.find(admin => admin.username === username)
-    }
-
+  async findAdmin(email: string): Promise<Admin> {
+    const user = await this.adminModel.findOne({ email: email});
+    return user;
+  }
 }
 
-// import service inside module 
+// import service inside module

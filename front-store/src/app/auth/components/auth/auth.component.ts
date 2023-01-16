@@ -18,9 +18,12 @@ export class AuthComponent {
     this.isLoginMode = !this.isLoginMode
   }
   onSubmit(form:NgForm){
+    // console.log(form)
     if(form.invalid){
       return ; 
     }
-    this.authService.signup(form.value.email, form.value.password)
+    this.authService.signIn(form.value.email,form.value.password)
+
+    
   }
 }

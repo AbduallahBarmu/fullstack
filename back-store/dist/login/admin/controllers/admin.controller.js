@@ -20,7 +20,7 @@ let AdminController = class AdminController {
         this.adminService = adminService;
     }
     async getAdmin(id) {
-        return this.adminService.findOne(id);
+        return this.adminService.findAdmin(id);
     }
 };
 __decorate([

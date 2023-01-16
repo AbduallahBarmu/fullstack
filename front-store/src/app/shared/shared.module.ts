@@ -8,9 +8,6 @@ import { SpinnerComponent } from './components/spinner/spinner.component';
 import { SelectComponent } from './components/select/select.component';
 import { FormsModule} from '@angular/forms'
 
-
-
-
 // material UI
 import { MatTableModule } from '@angular/material/table';
 import {MatCardModule} from '@angular/material/card';

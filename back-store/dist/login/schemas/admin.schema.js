@@ -20,6 +20,10 @@ __decorate([
 __decorate([
     (0, mongoose_1.Prop)(),
     __metadata("design:type", String)
+], Admin.prototype, "username", void 0);
+__decorate([
+    (0, mongoose_1.Prop)(),
+    __metadata("design:type", String)
 ], Admin.prototype, "email", void 0);
 __decorate([
     (0, mongoose_1.Prop)(),

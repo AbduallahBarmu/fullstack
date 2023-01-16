@@ -6,7 +6,9 @@ export type AdminDocument = Admin & Document
 @Schema()
 export class Admin{
     @Prop()
-    id:string; 
+    id:string;
+    @Prop()
+    username:string; 
     @Prop()
     email:string; 
     @Prop()

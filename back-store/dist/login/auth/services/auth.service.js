@@ -30,7 +30,7 @@ let AuthService = class AuthService {
         this.jwtService = jwtService;
     }
     async validaterAdmin(username, pass) {
-        const admin = await this.adminService.findOne(username);
+        const admin = await this.adminService.findAdmin(username);
         if (admin && admin.password === pass) {
             const { password } = admin, result = __rest(admin, ["password"]);
             return result;
@@ -40,14 +40,14 @@ let AuthService = class AuthService {
     async login(admin) {
         const payload = { username: admin.username, sub: admin.adminId };
         return {
-            access_token: this.jwtService.sign(payload)
+            access_token: this.jwtService.sign(payload),
         };
     }
-    ;
 };
 AuthService = __decorate([
     (0, common_1.Injectable)(),
-    __metadata("design:paramtypes", [admin_service_1.AdminService, jwt_1.JwtService])
+    __metadata("design:paramtypes", [admin_service_1.AdminService,
+        jwt_1.JwtService])
 ], AuthService);
 exports.AuthService = AuthService;
 //# sourceMappingURL=auth.service.js.map

@@ -10,10 +10,13 @@ import { AuthData } from '../models/authModels';
 export class AuthService {
   constructor(private http: HttpClient) {}
 
-  signup(email: string, password: string): Promise<AuthData[]> {
+  signIn(email: string, password: string): Promise<AuthData[]> {
+   
     const authData: AuthData = { email: email, password: password };
+    console.log(environment.baseApi + 'auth/login', authData ,'auth data')
     return firstValueFrom(
-      this.http.post<AuthData[]>(environment.baseApi + 'signup', authData)
+      this.http.post<AuthData[]>(environment.baseApi + 'auth/login', authData)
+
     );
   }
 }

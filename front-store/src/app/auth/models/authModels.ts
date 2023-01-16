@@ -1,6 +1,7 @@
 export interface AuthData{
     // _id:number, 
     email:string, 
-    password:string
+    // username:string,
+    password:string,
 }
 
