@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
-
+import {Router} from '@angular/router';
 @Component({
   selector: 'app-auth',
   templateUrl: './auth.component.html',
@@ -12,7 +12,7 @@ export class AuthComponent {
   isLoading: boolean = false;   // initily we are not loading
   errorMessage: any = null      // should hold an error message 
   
-  constructor(public authService: AuthService) {}
+  constructor(public authService: AuthService , private router:Router) {}
 
   onSwitchMode() {
     this.isLoginMode = !this.isLoginMode;
@@ -27,12 +27,16 @@ export class AuthComponent {
 
     this.isLoading = true;
     if (this.isLoginMode) {
+
+      
       try {
         await this.authService.signIn(email, password);
+        // redurect route into dashbord page  
+        this.router.navigate(['/dashboard'])
         alert('LogIn Successfully :) ');
         this.isLoading = false;
-        // redurect root dashbord also must import from constractor 
 
+        
       } catch (error) {
         this.errorMessage = ' LogIn Faild :('
         this.isLoading = false;
