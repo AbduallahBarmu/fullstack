@@ -15,12 +15,16 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.AdminController = void 0;
 const common_1 = require("@nestjs/common");
 const admin_service_1 = require("../services/admin.service");
+const create_admin_1 = require("../../dto/create-admin");
 let AdminController = class AdminController {
     constructor(adminService) {
         this.adminService = adminService;
     }
     async getAdmin(id) {
         return this.adminService.findAdmin(id);
+    }
+    async createAdmin(createAdminDto) {
+        return this.adminService.signup(createAdminDto);
     }
 };
 __decorate([
@@ -30,6 +34,13 @@ __decorate([
     __metadata("design:paramtypes", [Object]),
     __metadata("design:returntype", Promise)
 ], AdminController.prototype, "getAdmin", null);
+__decorate([
+    (0, common_1.Post)(),
+    __param(0, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [create_admin_1.CreateAdminDto]),
+    __metadata("design:returntype", Promise)
+], AdminController.prototype, "createAdmin", null);
 AdminController = __decorate([
     (0, common_1.Controller)('admin'),
     __metadata("design:paramtypes", [admin_service_1.AdminService])

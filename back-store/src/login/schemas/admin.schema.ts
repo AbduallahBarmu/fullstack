@@ -8,8 +8,6 @@ export class Admin{
     @Prop()
     id:string;
     @Prop()
-    username:string; 
-    @Prop()
     email:string; 
     @Prop()
     password:string;

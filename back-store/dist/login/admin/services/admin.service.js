@@ -25,6 +25,10 @@ let AdminService = class AdminService {
         const user = await this.adminModel.findOne({ email: email });
         return user;
     }
+    async signup(admin) {
+        const newAdmin = new this.adminModel(admin);
+        return await newAdmin.save();
+    }
 };
 AdminService = __decorate([
     (0, common_1.Injectable)(),

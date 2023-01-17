@@ -13,10 +13,11 @@ import { ProductsModule } from './products/products.module';
 // DB 
 import config from './config/keys'
 import { MongooseModule } from '@nestjs/mongoose';
+import { AuthService } from './login/auth/services/auth.service';
 
 @Module({
   imports: [ProductsModule, AuthModule ,AdminModule, MongooseModule.forRoot(config.mongoURI)],
-  controllers: [AppController, ProductsController],
-  providers: [AppService],
+  controllers: [AppController],
+  providers: [AppService, ],
 })
 export class AppModule {}

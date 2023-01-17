@@ -2,11 +2,20 @@ import { Injectable } from '@nestjs/common';
 import { AdminService } from '../../admin/services/admin.service';
 import { JwtService } from '@nestjs/jwt';
 
+// DB
+import { Model } from 'mongoose';
+import { InjectModel } from '@nestjs/mongoose';
+
+import { Admin } from '../../schemas/admin.schema';
+
 @Injectable()
 export class AuthService {
   constructor(
     private adminService: AdminService,
     private jwtService: JwtService,
+
+
+   
   ) {}
 
   // AuthService has the job of retrieving a user and verifying the password by using this method
@@ -27,4 +36,7 @@ export class AuthService {
       access_token: this.jwtService.sign(payload),
     };
   }
+
+
+  
 }
