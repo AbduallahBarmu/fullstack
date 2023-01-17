@@ -1,29 +1,22 @@
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
-import { Observable } from 'rxjs';
-import { AuthData } from '../../models/auth';
+
 @Component({
   selector: 'app-auth',
   templateUrl: './auth.component.html',
   styleUrls: ['./auth.component.scss'],
 })
 export class AuthComponent {
-  isLoginMode = true;
-
+  isLoginMode: boolean = true;
+  isLoading: boolean = false;   // initily we are not loading
+  errorMessage: any = null      // should hold an error message 
+  
   constructor(public authService: AuthService) {}
 
   onSwitchMode() {
     this.isLoginMode = !this.isLoginMode;
   }
-
-  // onSubmit(form:NgForm){
-  //   // console.log(form)
-  //   if(form.invalid){
-  //     return ;
-  //   }
-  //   this.authService.signIn(form.value.email,form.value.password)
-  // }
 
   async onSubmit(form: NgForm) {
     if (form.invalid) {
@@ -32,20 +25,27 @@ export class AuthComponent {
     const email = form.value.email;
     const password = form.value.password;
 
-    // let authObs :Observable<AuthData>
-
+    this.isLoading = true;
     if (this.isLoginMode) {
       try {
         await this.authService.signIn(email, password);
-        alert('admin logIn successfully');
-      } catch (error) {
-        alert('admin logIn faild');
-      }
-   
+        alert('LogIn Successfully :) ');
+        this.isLoading = false;
+        // redurect root dashbord also must import from constractor 
 
+      } catch (error) {
+        this.errorMessage = ' LogIn Faild :('
+        this.isLoading = false;
+      }
     } else {
-      await this.authService.signUp(email, password);
-      alert('admin signUp successfully');
+      try {
+        await this.authService.signUp(email, password);
+        // alert('SignUp Successfully :) ');
+        this.isLoading = false;
+      } catch (error) {
+        this.errorMessage = ' SignUp Faild'
+        this.isLoading = false;
+      }
     }
 
     form.reset();
