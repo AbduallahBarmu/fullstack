@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ProductsService } from '../../services/products.service';
 import { Product } from '../../models/productModels';
-
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-products-details',
@@ -14,13 +14,14 @@ export class ProductsDetailsComponent implements OnInit {
   id:any
   data:any ={} 
   loading:boolean = false; 
-  
+  baseApi: string = ''
   
   
   constructor(private route:ActivatedRoute , private service:ProductsService){
     // we catch the ID of the product item  
     this.id = this.route.snapshot.paramMap.get("id")   
-    console.log(this.id) 
+    console.log(this.id) , 
+    this.baseApi = environment.baseApi
   }
   
   

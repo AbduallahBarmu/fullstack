@@ -1,6 +1,8 @@
 <div class="item">
   <mat-card routerLink="/details/{{data._id }}">
-    <img mat-card-image src="{{ data.image }}" alt="" />
+    <img mat-card-image src="{{baseApi + data.image }}" alt="" />
+ 
+
     <mat-card-title
       ><h4>{{ data.name }}</h4></mat-card-title
     >

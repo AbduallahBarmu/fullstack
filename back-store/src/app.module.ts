@@ -14,9 +14,13 @@ import { ProductsModule } from './products/products.module';
 import config from './config/keys'
 import { MongooseModule } from '@nestjs/mongoose';
 import { AuthService } from './login/auth/services/auth.service';
-
+import {ServeStaticModule} from '@nestjs/serve-static/dist/serve-static.module'
+import { join } from 'path';
 @Module({
-  imports: [ProductsModule, AuthModule ,AdminModule, MongooseModule.forRoot(config.mongoURI)],
+  imports: [ProductsModule, AuthModule ,AdminModule, MongooseModule.forRoot(config.mongoURI),
+    ServeStaticModule.forRoot({rootPath:join(__dirname, '..','public')})
+    
+  ],
   controllers: [AppController],
   providers: [AppService, ],
 })

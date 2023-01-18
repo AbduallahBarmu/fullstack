@@ -7,27 +7,24 @@ import { AuthService } from '../services/auth.service';
 
 @Controller('auth')
 export class AuthController {
-
-  constructor(private authService:AuthService){}
+  constructor(private authService: AuthService) {}
 
   // SIGNin
   @UseGuards(LocalAuthGuard)
   @Post('login')
   async login(@Request() req) {
     // return req.user;
-    return this.authService.login(req.user)
-    
+    return this.authService.login(req.user);
   }
-
-  // // SIGNup
-  // @Post('signup')
-  // async signUp(@Request() req) {
-  //   return req.user;
-  // }
 
   @UseGuards(JwtAuthGuard)
   @Get('profile')
   getProfile(@Request() req) {
     return req.user;
   }
+  // // SIGNup
+  // @Post('signup')
+  // async signUp(@Request() req) {
+  //   return req.user;
+  // }
 }

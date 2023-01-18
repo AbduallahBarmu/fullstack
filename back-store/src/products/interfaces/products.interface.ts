@@ -5,7 +5,7 @@ export interface ProductInterface {
     region:string ;
     price:number;
     description?:string;  
-    // image:string;
+    image:string;
 }
 
 // import the interface in the service 

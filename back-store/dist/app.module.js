@@ -15,11 +15,15 @@ const admin_module_1 = require("./login/admin/admin.module");
 const products_module_1 = require("./products/products.module");
 const keys_1 = require("./config/keys");
 const mongoose_1 = require("@nestjs/mongoose");
+const serve_static_module_1 = require("@nestjs/serve-static/dist/serve-static.module");
+const path_1 = require("path");
 let AppModule = class AppModule {
 };
 AppModule = __decorate([
     (0, common_1.Module)({
-        imports: [products_module_1.ProductsModule, auth_module_1.AuthModule, admin_module_1.AdminModule, mongoose_1.MongooseModule.forRoot(keys_1.default.mongoURI)],
+        imports: [products_module_1.ProductsModule, auth_module_1.AuthModule, admin_module_1.AdminModule, mongoose_1.MongooseModule.forRoot(keys_1.default.mongoURI),
+            serve_static_module_1.ServeStaticModule.forRoot({ rootPath: (0, path_1.join)(__dirname, '..', 'public') })
+        ],
         controllers: [app_controller_1.AppController],
         providers: [app_service_1.AppService,],
     })

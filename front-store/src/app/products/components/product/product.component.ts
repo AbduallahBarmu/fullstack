@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Product } from '../../models/productModels';
-
+import { ProductsService } from '../../services/products.service';
+import { environment } from 'src/environments/environment';
 @Component({
   selector: 'app-product',
   templateUrl: './product.component.html',
@@ -13,10 +14,13 @@ export class ProductComponent implements OnInit {
 
   addButton:boolean = false;
   amount:number = 0 ;  
+  baseApi:string = ''
 
 
-
-  constructor() { }
+  constructor() 
+  { 
+    this.baseApi = environment.baseApi
+  }
 
   ngOnInit(): void {
   }
@@ -27,4 +31,5 @@ export class ProductComponent implements OnInit {
     alert("product added successfully")
   }
  
+
 }

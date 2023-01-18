@@ -29,5 +29,6 @@ export declare class Product {
     region: String;
     price: Number;
     description: String;
+    image: string;
 }
 export declare const productSchema: import("mongoose").Schema<Product, import("mongoose").Model<Product, any, any, any, any>, {}, {}, {}, {}, import("mongoose").DefaultSchemaOptions, Product>;
