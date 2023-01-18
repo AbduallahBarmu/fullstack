@@ -33,6 +33,7 @@ export class AuthComponent {
         await this.authService.signIn(email, password);
         // redurect route into dashbord page  
         this.router.navigate(['/dashboard'])
+        
         alert('LogIn Successfully :) ');
         this.isLoading = false;
 
@@ -44,7 +45,7 @@ export class AuthComponent {
     } else {
       try {
         await this.authService.signUp(email, password);
-        // alert('SignUp Successfully :) ');
+        alert('SignUp Successfully :) ');
         this.isLoading = false;
       } catch (error) {
         this.errorMessage = ' SignUp Faild'

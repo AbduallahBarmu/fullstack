@@ -7,6 +7,7 @@ import { ProductsService } from 'src/app/products/services/products.service';
 
 import { FormGroup } from '@angular/forms';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-product-form',
@@ -22,7 +23,8 @@ export class AddProductFormComponent {
   constructor(
     private route: ActivatedRoute,
     private adminService: AdminService,
-    private service: ProductsService
+    private service: ProductsService,
+    private router: Router
   ) {}
 
   async ngOnInit() {
@@ -37,12 +39,16 @@ export class AddProductFormComponent {
     if (this.id) {
       // in case there is an ID means we have data in the form so, lets update it
       await this.adminService.updateProductServ(this.id, form);
+      // redirect router inot dashbord page
+      this.router.navigate(['/dashboard']);
       alert('Great !! The product Updated successfully');
     } else {
       // in case there is no ID means the form is empty and we will create new product
       this.products = await this.adminService.createProductServ(form);
-      this.form.reset();
+      // redirect router inot dashbord page
+      this.router.navigate(['/dashboard']);
       alert('Great !! The product Added successfully');
     }
+    this.form.reset();
   }
 }

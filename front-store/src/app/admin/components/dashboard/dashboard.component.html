@@ -6,7 +6,8 @@
     data-target="#viewCart"
     routerLink="/addform/"
   >
-    Add Product
+    <mat-icon class="cart-icon">add_circle </mat-icon>
+    <span> Add Product</span>
   </button>
 </div>
 <table id="customers">
@@ -29,13 +30,18 @@
           type="button"
           (click)="deleteProduct(item._id)"
         >
-          <span> Delete</span>
+          <mat-icon class="cart-icon">delete</mat-icon>
         </button>
-        <button class="edit-btn" type="button"  routerLink="/updateProduct/{{item._id }}" >Edit</button>
+        <button
+          class="edit-btn"
+          type="button"
+          routerLink="/updateProduct/{{ item._id }}"
+        >
+          <mat-icon class="cart-icon">border_color</mat-icon>
+        </button>
       </td>
     </tr>
   </tbody>
 </table>
 
 
-<!--  (click)="updatideProduct()"  -->
