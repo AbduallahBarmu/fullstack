@@ -1,20 +1,28 @@
-html,
-body {
-  background: #f1f1f1;
-  font-family: "Merriweather", sans-serif;
-  padding: 1em;
-}
-
 h1 {
   text-align: center;
-  color: #a8a8a8;
+  font-size: 30px;
+  font-weight: bold;
+  color: #bdbdbd;
+  margin-top: 30px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #ebe6e2;
+  text-shadow: 0 2px 0 rgba(255, 255, 255, 0.8);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.8);
 }
 
 form {
-  max-width: 600px;
+  max-width: 900px;
   text-align: center;
-  margin: 20px auto;
-
+  padding: 40px;
+  margin: 60px auto;
+  background: #fffaf6;
+  border-radius: 5px;
+  color: #7e7975;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2), 0 1px 5px rgba(0, 0, 0, 0.2),
+    0 0 0 12px rgba(255, 255, 255, 0.4);
+  input {
+    border-color: #7e7975;
+  }
   input,
   textarea {
     border-radius: 7px;
@@ -24,26 +32,27 @@ form {
     width: 100%;
     margin-top: 1em;
     font-family: "Merriweather", sans-serif;
-
     resize: none;
   }
 
   #input-submit {
-    color: white;
-    background: rgb(105, 172, 89);
+    border: none;
     cursor: pointer;
-    font-size: 1.3em;
-    font-weight: 100;
+    font-weight: bold;
+    font-size: 24px;
+    color: white;
+    background-color: #d5bdaf;
+    text-align: center;
   }
 
   textarea {
-    height: 126px;
+    height: 210px;
   }
 }
 
 .half {
   float: left;
-  width: 48%;
+  width: 40%;
   margin-bottom: 1em;
 }
 
@@ -52,7 +61,7 @@ form {
 }
 
 .left {
-  margin-right: 2%;
+  margin-right: 7%;
 }
 
 @media (max-width: 480px) {
@@ -61,19 +70,4 @@ form {
     float: none;
     margin-bottom: 0;
   }
-}
-
-/* Clearfix */
-.cf:before,
-.cf:after {
-  content: " "; 
-  display: table; 
-}
-
-.cf:after {
-  clear: both;
-}
-img{
-  width: 60%;
-  max-height: 90px;
 }

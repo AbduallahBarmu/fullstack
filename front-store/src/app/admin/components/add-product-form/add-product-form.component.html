@@ -1,4 +1,4 @@
-<h1>Add New Product</h1>
+<h1>Add New Coffe</h1>
 <form class="cf" (ngSubmit)="addProduct(form.value)" #form="ngForm">
   <div class="half left cf">
     <input
@@ -42,20 +42,22 @@
       [(ngModel)]="data.description"
       required
     ></textarea>
-    <div class="upload-image">
-      <img src="{{data.image}}" alt="" />
-      <input
-        type="text"
-        class="form-control"
-        placeholder="Enter Image URL"
-        ngModel
-        name="image"
-        [(ngModel)]="data.image"
-        required
-        
-        
-      />
-    </div>
   </div>
-  <input [disabled]="!form.valid" type="submit" value="Submit" id="input-submit" />
+  <div class="upload-image">
+    <input
+      type="text"
+      class="form-control"
+      placeholder="Enter Image URL"
+      ngModel
+      name="image"
+      [(ngModel)]="data.image"
+      required
+    />
+  </div>
+  <input
+    [disabled]="!form.valid"
+    type="submit"
+    value="Submit"
+    id="input-submit"
+  />
 </form>
