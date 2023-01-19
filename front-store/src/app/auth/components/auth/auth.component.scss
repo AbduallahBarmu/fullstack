@@ -1,13 +1,109 @@
-.row{
-    margin-top: 10%;
-    display: flex; 
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
+.form {
+  width: 500px;
+  margin: 60px auto 30px;
+  padding: 15px;
+  position: relative;
+  background: #fffaf6;
+  border-radius: 4px;
+  color: #7e7975;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2), 0 1px 5px rgba(0, 0, 0, 0.2),
+    0 0 0 12px rgba(255, 255, 255, 0.4);
 }
+
+h1 {
+  font-size: 30px;
+  font-weight: bold;
+  color: #bdbdbd;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #ebe6e2;
+  text-shadow: 0 2px 0 rgba(255, 255, 255, 0.8);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.8);
+ 
+  .log-in,
+  .sign-up {
+   display: inline-block;
+   text-transform: uppercase;
+ }
+ 
+ .log-in {
+   color: #6c6763;
+   padding-right: 2px;
+ }
+ 
+ .sign-up {
+   color: #d4a373;
+   padding-left: 2px;
+ }
+}
+
+
+
+.row {
+  margin-top: 10%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.form-group {
+  margin-bottom: 5%;
+}
+.btn {
+  margin: 20px 10px;
+  background-color: #d5bdaf;
+  border-color:#d5bdaf ;
+  padding: 10px;
+  color: #fffaf6;
+ 
+}
+.icon-mail {
+}
+.icon-lock {
+
+}
+
+
 .form-group{
-    margin-bottom: 5%;
+    width: 50%;
+    float: left;
+    padding-top: 15px;
+    border-top: 1px solid rgba(255,255,255,1);
 }
-.btn{
-    margin: 20px 10px;
+
+.form-group:first-of-type {
+    padding-right: 5px;
+}
+
+.form-group:last-of-type {
+    padding-left: 5px;
+}
+
+
+ label {
+    display: block;
+    padding: 0 0 5px 2px;
+    cursor: pointer;
+    text-transform: uppercase;
+    font-weight: 400;
+    text-shadow: 0 1px 0 rgba(255,255,255,0.8);
+    font-size: 18px;
+}
+
+ label i {
+    margin-right: 25px; /* Gap between icon and text */
+    display: inline-block;
+    width: 10px;
+}
+
+.form-control{
+    font-family: 'Lato', Calibri, Arial, sans-serif;
+    font-size: 20px;
+    font-weight: 200;
+    display: block;
+    width: 100%;
+    padding: 5px;
+    margin-bottom: 5px;
+    border: 3px solid #c0c7aa;
+    border-radius: 5px;
+    transition: all 0.3s ease-out;
 }

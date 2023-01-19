@@ -14,12 +14,12 @@ export class ProductComponent implements OnInit {
 
   addButton:boolean = false;
   amount:number = 0 ;  
-  baseApi:string = ''
+  // baseApi:string = ''
 
 
   constructor() 
   { 
-    this.baseApi = environment.baseApi
+    // this.baseApi = environment.baseApi
   }
 
   ngOnInit(): void {

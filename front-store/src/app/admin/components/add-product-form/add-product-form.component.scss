@@ -66,10 +66,14 @@ form {
 /* Clearfix */
 .cf:before,
 .cf:after {
-  content: " "; /* 1 */
-  display: table; /* 2 */
+  content: " "; 
+  display: table; 
 }
 
 .cf:after {
   clear: both;
+}
+img{
+  width: 60%;
+  max-height: 90px;
 }

@@ -1,16 +1,61 @@
-
-
-
-<h1>Add New Product</h1> 
+<h1>Add New Product</h1>
 <form class="cf" (ngSubmit)="addProduct(form.value)" #form="ngForm">
   <div class="half left cf">
-    <input type="text" id="input-name" placeholder="Name" ngModel name ="name" [(ngModel)]="data.name">
-    <input type="text" id="input-region" placeholder="Region" ngModel name ="region"[(ngModel)]="data.region">
-    <input type="number" id="input-price" placeholder="Price" ngModel name ="price"[(ngModel)]="data.price">
+    <input
+      type="text"
+      id="input-name"
+      placeholder="Product Name"
+      ngModel
+      name="name"
+      [(ngModel)]="data.name"
+      required
+    />
+
+    <input
+      type="text"
+      id="input-region"
+      placeholder="Product Region"
+      ngModel
+      name="region"
+      [(ngModel)]="data.region"
+      required
+    />
+
+    <input
+      type="number"
+      id="input-price"
+      placeholder="Product Price"
+      ngModel
+      name="price"
+      [(ngModel)]="data.price"
+      required
+    />
   </div>
   <div class="half right cf">
-    <textarea name="description" type="text" id="input-description" placeholder="Description" 
-     ngModel name="description" [(ngModel)]="data.description"></textarea>
-  </div>  
-  <input type="submit" value="Submit" id="input-submit" >
+    <textarea
+      name="description"
+      type="text"
+      id="input-description"
+      placeholder="Product Description"
+      ngModel
+      name="description"
+      [(ngModel)]="data.description"
+      required
+    ></textarea>
+    <div class="upload-image">
+      <img src="{{data.image}}" alt="" />
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Enter Image URL"
+        ngModel
+        name="image"
+        [(ngModel)]="data.image"
+        required
+        
+        
+      />
+    </div>
+  </div>
+  <input [disabled]="!form.valid" type="submit" value="Submit" id="input-submit" />
 </form>

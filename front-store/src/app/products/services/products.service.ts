@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { firstValueFrom } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Product } from '../models/productModels';
-
+import {Observable} from 'rxjs';
 @Injectable({
   providedIn: 'root',
 })
@@ -39,5 +39,12 @@ export class ProductsService {
     );
   }
 
+  uploadImage(file:any):Observable<any>{
+    const formData = new FormData()
+    formData.append('file', file, file.name)
+     // Make http post request over api
+      // with formData as req
+      return this.http.post(environment.baseApi , formData)
+  }
 
 }

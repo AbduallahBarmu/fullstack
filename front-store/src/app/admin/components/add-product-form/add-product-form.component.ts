@@ -19,6 +19,12 @@ export class AddProductFormComponent {
   data: any = {};
   form!: FormGroup;
   id: any;
+  // base64: any = '';
+  // file?: File 
+  
+  shortLink: string = "";
+  loading: boolean = false; // Flag variable
+  
 
   constructor(
     private route: ActivatedRoute,
@@ -49,6 +55,30 @@ export class AddProductFormComponent {
       this.router.navigate(['/dashboard']);
       alert('Great !! The product Added successfully');
     }
-    this.form.reset();
+    // this.form.reset();
   }
+
+
+  // getImagePath(event:any ){
+  //   const file = event.target.files[0]
+  //   const reader = new FileReader();
+  //   reader.readAsDataURL(file)
+  //   reader.onload= ()=>{
+  //     this.base64 = reader.result
+  //     this.form.get('image')?.setValue(this.base64)
+  //     console.log(this.base64);
+  //   }
+  
+  
+    // this.file = <File> event.target.files[0].name // this path from event object in the console
+    // // console.log(event.target.files[0].name);
+    // this.service.uploadImage(this.file).subscribe(
+    //   (event: any) => {
+    //     if(typeof(event) === 'object'){
+    //       //short link via api response 
+    //       this.shortLink = event.link
+    //     }
+    //   }
+    // )
+  //}
 }
