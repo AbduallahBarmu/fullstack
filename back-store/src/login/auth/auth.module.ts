@@ -21,11 +21,11 @@ import { jwtConstants } from './constants';
     JwtModule.register({  // We configure the JwtModule using register(), passing in a configuration object
       secret: jwtConstants.secret,
       signOptions: { expiresIn: '60s' },
-    }),
-  ],
+    })],
   
   providers: [AuthService, LocalStrategy , JwtStrategy],
   controllers: [AuthController],
+  exports:[AuthService]
 })
 export class AuthModule {}
 

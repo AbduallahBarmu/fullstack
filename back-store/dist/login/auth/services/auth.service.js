@@ -29,8 +29,8 @@ let AuthService = class AuthService {
         this.adminService = adminService;
         this.jwtService = jwtService;
     }
-    async validaterAdmin(username, pass) {
-        const admin = await this.adminService.findAdmin(username);
+    async validaterAdmin(email, pass) {
+        const admin = await this.adminService.findAdmin(email);
         if (admin && admin.password === pass) {
             const { password } = admin, result = __rest(admin, ["password"]);
             return result;
@@ -38,7 +38,7 @@ let AuthService = class AuthService {
         return null;
     }
     async login(admin) {
-        const payload = { username: admin.username, sub: admin.adminId };
+        const payload = { email: admin.email, sub: admin.adminId };
         return {
             access_token: this.jwtService.sign(payload),
         };

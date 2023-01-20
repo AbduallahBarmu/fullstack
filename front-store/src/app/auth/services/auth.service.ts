@@ -22,8 +22,6 @@ export class AuthService {
   }
 
 
-
-
   signUp(email:string , password:string):Promise<AuthData[]>{
     const authData: AuthData = { email: email, password: password };
     return firstValueFrom( 

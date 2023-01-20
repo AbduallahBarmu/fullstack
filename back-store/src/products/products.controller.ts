@@ -36,7 +36,6 @@ export class ProductsController {
   createProduct(@Body() createItemDto: CreateProdcutsDto): Promise<Product> {
     return this.productsService.create(createItemDto);
   }
-  
 
   // delete the product by ID
   @Delete(':id')
@@ -44,10 +43,11 @@ export class ProductsController {
     return this.productsService.delete(id);
   }
 
-  @Patch(':id') 
+  @Patch(':id')
   updateProduct(
     @Body() updateItemDto: CreateProdcutsDto,
-    @Param('id') id,): Promise<Product> {
+    @Param('id') id,
+  ): Promise<Product> {
     return this.productsService.update(id, updateItemDto);
   }
 }

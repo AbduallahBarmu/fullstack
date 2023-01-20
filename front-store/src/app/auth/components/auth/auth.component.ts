@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
 import {Router} from '@angular/router';
@@ -7,13 +7,17 @@ import {Router} from '@angular/router';
   templateUrl: './auth.component.html',
   styleUrls: ['./auth.component.scss'],
 })
-export class AuthComponent {
+export class AuthComponent  implements OnInit{
   isLoginMode: boolean = true;
   isLoading: boolean = false;   // initily we are not loading
   errorMessage: any = null      // should hold an error message 
   
   constructor(public authService: AuthService , private router:Router) {}
 
+
+  ngOnInit(): void {
+
+  }
   onSwitchMode() {
     this.isLoginMode = !this.isLoginMode;
   }
@@ -26,9 +30,7 @@ export class AuthComponent {
     const password = form.value.password;
 
     this.isLoading = true;
-    if (this.isLoginMode) {
-
-      
+    if (this.isLoginMode) { 
       try {
         await this.authService.signIn(email, password);
         // redurect route into dashbord page  

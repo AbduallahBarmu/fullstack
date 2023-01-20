@@ -16,6 +16,7 @@ export class AdminController {
     return this.adminService.findAdmin(id);
   }
 
+  
   @Post()
   async createAdmin(@Body() createAdminDto: CreateAdminDto): Promise<Admin> {
     return this.adminService.signup(createAdminDto);

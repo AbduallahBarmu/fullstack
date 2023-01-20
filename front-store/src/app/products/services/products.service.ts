@@ -25,19 +25,19 @@ export class ProductsService {
     );
   }
 
-  getAllCategories(): Promise<Product[]> {
-    return firstValueFrom(
-      this.http.get<Product[]>(environment.baseApi + 'products/categories')
-    );
-  }
+  // getAllCategories(): Promise<Product[]> {
+  //   return firstValueFrom(
+  //     this.http.get<Product[]>(environment.baseApi + 'products/categories')
+  //   );
+  // }
 
-  getProductsByCategory(keyword: string): Promise<Product[]> {
-    return firstValueFrom(
-      this.http.get<Product[]>(
-        environment.baseApi + 'products/category/' + keyword
-      )
-    );
-  }
+  // getProductsByCategory(keyword: string): Promise<Product[]> {
+  //   return firstValueFrom(
+  //     this.http.get<Product[]>(
+  //       environment.baseApi + 'products/category/' + keyword
+  //     )
+  //   );
+  // }
 
   uploadImage(file:any):Observable<any>{
     const formData = new FormData()

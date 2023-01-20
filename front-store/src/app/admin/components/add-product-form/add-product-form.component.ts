@@ -21,9 +21,8 @@ export class AddProductFormComponent {
   id: any;
   // base64: any = '';
   // file?: File 
-  
-  shortLink: string = "";
-  loading: boolean = false; // Flag variable
+  // shortLink: string = "";
+  // loading: boolean = false; 
   
 
   constructor(

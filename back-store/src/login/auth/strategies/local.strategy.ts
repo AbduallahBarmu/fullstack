@@ -22,4 +22,6 @@ export class LocalStrategy extends PassportStrategy(Strategy) {
     We've also implemented the validate() method. 
     For each strategy, Passport will call the verify function (implemented with the validate() method
   */
+
+  // we need to import this strategy in the auth moduel 
 }

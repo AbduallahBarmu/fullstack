@@ -12,20 +12,32 @@ export class AdminService {
   ) {}
 
 
-  async findAdmin(email: string): Promise<Admin> {
+  async findAdmin(email: string): Promise<Admin | undefined> {
     const user = await this.adminModel.findOne({ email: email});
     return user;
   }
 
 
+  
   async signup(admin: Admin) :Promise<Admin>{
-    // const reqBody = {
-    //   email: admin.email,
-    //   password: admin.password,
-    // };
     const newAdmin =  new this.adminModel(admin)
     return await newAdmin.save()
   }
+  
+
+  
+  ///////////////////////
+
+  //  async findAdmin({email, password}): Promise<Admin | undefined> {
+  //     const user = await this.adminModel.findOne({ email , password});
+  //     return user;
+  //   }
+
+  // async createAdmain(email:string, password:string):Promise<Admin>{
+  //   return this.adminModel.create({
+  //     email , password
+  //   })
+  // }
 
 }
 
