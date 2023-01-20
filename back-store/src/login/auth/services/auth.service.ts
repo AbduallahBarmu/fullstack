@@ -6,15 +6,13 @@ import { JwtService } from '@nestjs/jwt';
 import { Model } from 'mongoose';
 import { InjectModel } from '@nestjs/mongoose';
 import { Admin } from '../../schemas/admin.schema';
+import { response } from 'express';
 
 @Injectable()
 export class AuthService {
   constructor(
     private adminService: AdminService,
     private jwtService: JwtService,
-
-
-   
   ) {}
 
   // AuthService has the job of retrieving a user and verifying the password by using this method
@@ -29,17 +27,10 @@ export class AuthService {
 
   // handle generating JWT by create this login() function also by importing jwtService
   async login(admin: any) {
-    const payload = {email: admin.email, sub: admin.adminId };
+    const payload = { email: admin.email, sub: admin.adminId };
     return {
       // sign() function generate our JWT from a subset of the admin object properties
       access_token: this.jwtService.sign(payload),
-
-      // access_token :this.jwtService.sign({
-      //   email:admin , sub:1
-      // })
     };
   }
-
-
-  
 }

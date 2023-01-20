@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
 import {Router} from '@angular/router';
+import { AuthData } from '../../models/auth'; 
 @Component({
   selector: 'app-auth',
   templateUrl: './auth.component.html',
@@ -11,7 +12,9 @@ export class AuthComponent  implements OnInit{
   isLoginMode: boolean = true;
   isLoading: boolean = false;   // initily we are not loading
   errorMessage: any = null      // should hold an error message 
-  
+  authData:AuthData[] =[]
+
+
   constructor(public authService: AuthService , private router:Router) {}
 
 
@@ -32,7 +35,10 @@ export class AuthComponent  implements OnInit{
     this.isLoading = true;
     if (this.isLoginMode) { 
       try {
-        await this.authService.signIn(email, password);
+        const res = await this.authService.signIn(email, password);
+       console.log(res);
+
+       localStorage.setItem('token', res.access_token)
         // redurect route into dashbord page  
         this.router.navigate(['/dashboard'])
         this.isLoading = false;
@@ -54,4 +60,7 @@ export class AuthComponent  implements OnInit{
 
 
   }
+
+  
+
 }

@@ -23,9 +23,5 @@ export class AuthController {
   }
 
   
-  // // SIGNup
-  // @Post('signup')
-  // async signUp(@Request() req) {
-  //   return req.user;
-  // }
+
 }

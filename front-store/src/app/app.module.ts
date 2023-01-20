@@ -12,26 +12,29 @@ import { CartsModule } from './carts/carts.module';
 import { ProductsModule } from './products/products.module';
 import { AddProductFormComponent } from './admin/components/add-product-form/add-product-form.component';
 import { AuthComponent } from './auth/components/auth/auth.component';
-
+// import { AuthModule } from './auth/auth.module';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { TokenInterceptorService } from './auth/services/token/token-interceptor.service';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    AddProductFormComponent,
-    AuthComponent,
-    
-  ],
+  declarations: [AppComponent, AddProductFormComponent, AuthComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ProductsModule,
     CartsModule,
     SharedModule,
-    BrowserAnimationsModule, 
-    ReactiveFormsModule
-  
+    BrowserAnimationsModule,
+    ReactiveFormsModule,
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptorService,
+      multi: true,
+    },
+  ],
+
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

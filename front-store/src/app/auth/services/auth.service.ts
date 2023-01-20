@@ -13,11 +13,10 @@ export class AuthService {
 
 
   
-  signIn(email: string, password: string): Promise<AuthData[]> { 
+  signIn(email: string, password: string): Promise<any> { 
     const authData: AuthData = { email: email, password: password };
     return firstValueFrom(
       this.http.post<AuthData[]>(environment.baseApi + 'auth/login', authData)
-
     );
   }
 

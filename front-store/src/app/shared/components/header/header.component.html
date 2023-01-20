@@ -4,9 +4,9 @@
         <div class="content">
             <h2 class="logo"> KAVA</h2>
             <ul>
-                <li routerLink="/products"> COFFEE</li>
-                <li routerLink="/auth"> LOGIN </li>
-                <li>Logout</li>
+                <li routerLink="/products" > COFFEE</li>
+                <li routerLink="/auth" *ngIf="!isLogedIn"> LOGIN </li>
+                <li *ngIf="isLogedIn" > <button (click)="logOut()">Logout</button> </li>
                 <li routerLink="/cart" > 
                     <mat-icon class="cart-icon">shopping_cart</mat-icon>
                 </li>
