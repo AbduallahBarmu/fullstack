@@ -1,19 +1,32 @@
-
 <nav>
-    <div class="container">
-        <div class="content">
-            <h2 class="logo"> KAVA</h2>
-            <ul>
-                <li routerLink="/products" > COFFEE</li>
-                <li routerLink="/auth" *ngIf="!isLogedIn"> LOGIN </li>
-                <li *ngIf="isLogedIn" > <button (click)="logOut()">Logout</button> </li>
-                <li routerLink="/cart" > 
-                    <mat-icon class="cart-icon">shopping_cart</mat-icon>
-                </li>
-                <!-- <li routerLink="/dashboard"> Admin </li> -->
-            </ul>
-        </div>
+  <div class="container">
+    <div class="content">
+      <h2 class="logo">KAVA</h2>
+      <ul>
+        <li routerLink="/products" routerLinkActive="active">COFFEE</li>
+
+        <li style="cursor: pointer">
+          <a
+            *ngIf="!isLogedIn()"
+            routerLink="/auth"
+            routerLinkActive="active"
+          >
+            Login
+          </a>
+        </li>
+
+        <li
+          routerLink="/auth"
+          routerLinkActive="active"
+          style="cursor: pointer"
+        >
+          <a *ngIf="isLogedIn()" (click)="authService.logout()"> logOut </a>
+        </li>
+
+        <li routerLink="/cart">
+          <mat-icon class="cart-icon">shopping_cart</mat-icon>
+        </li>
+      </ul>
     </div>
+  </div>
 </nav>
-
-

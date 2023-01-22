@@ -1,20 +1,29 @@
 <div class="box">
-    <div class="row" *ngIf="!loading">
-        <div class="col-md-5 col-sm-12" >
-            <img src="{{data.image}}" alt="image">
-        </div>
-        <div class="col-md-7 col-sm-12">
-            <div class="info">
-                <ul class="list-unstyled">
-                    <li><strong>Name:</strong> {{data.name}}</li>
-                    <li><strong>Region:</strong> {{data.region}}</li>
-                    <li><strong>Price: </strong>${{data.price}}</li>
-                    <li><strong>Description:</strong> {{data.description}}</li>  
-                </ul>
-            </div>
-        </div>
+  <div class="row" *ngIf="!loading">
+    <div class="col-md-5 col-sm-12">
+      <img src="{{ data.image }}" alt="image" />
     </div>
-    <div class="text-center">
-        <app-spinner *ngIf="loading"> </app-spinner>
+    <div class="col-md-7 col-sm-12">
+    
+       
+        <div class="product_info">
+          <div class="product_name">
+            <h2>{{ data.name }}</h2>
+          </div>
+          <div class="product_content">
+            <ul>
+              <li><strong>Region:</strong> {{ data.region }}</li>
+              <li><strong>Price: </strong>${{ data.price }}</li>
+            </ul>
+          </div>
+          <div class="product_desc">
+            <p>{{ data.description }}</p>
+          </div>
+        </div>
+      </div>
     </div>
-</div>
+  </div>
+  <div class="text-center">
+    <app-spinner *ngIf="loading"> </app-spinner>
+  </div>
+

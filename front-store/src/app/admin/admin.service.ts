@@ -27,10 +27,10 @@ export class AdminService {
     );
   }
 
-  deleteProductServ(id: number): Promise<Product[]> {
+  deleteProductServ(id: number): Promise<any> {
     console.log('delete');
     return firstValueFrom(
-      this.http.delete<Product[]>(environment.baseApi + 'products/' + id)
+      this.http.delete<any>(environment.baseApi + 'products/' + id)
     );
   }
 }

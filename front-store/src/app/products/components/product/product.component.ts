@@ -10,7 +10,7 @@ import { environment } from 'src/environments/environment';
 export class ProductComponent implements OnInit {
 
   @Input() data!:Product                
-  @Output() item = new EventEmitter();   
+  @Output() item = new EventEmitter();    // from child to parent 
 
   addButton:boolean = false;
   amount:number = 0 ;  
@@ -27,8 +27,8 @@ export class ProductComponent implements OnInit {
 
 
   addProductToCart() {
-    this.item.emit({item:this.data ,quantity:this.amount })
-    alert("product added successfully")
+    this.item.emit({item:this.data , quantity:this.amount })
+    
   }
  
 

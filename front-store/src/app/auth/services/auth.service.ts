@@ -4,12 +4,13 @@ import { environment } from 'src/environments/environment';
 import { firstValueFrom } from 'rxjs';
 // Models
 import { AuthData } from '../models/auth';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient , private router:Router) {}
 
 
   
@@ -25,5 +26,11 @@ export class AuthService {
     const authData: AuthData = { email: email, password: password };
     return firstValueFrom( 
       this.http.post<AuthData[]>(environment.baseApi + 'admin' ,authData))
+  }
+
+
+  logout(){
+    localStorage.removeItem('token')
+    this.router.navigate(['/auth'])
   }
 }

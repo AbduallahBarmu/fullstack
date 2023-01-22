@@ -29,7 +29,7 @@ export class DashboardComponent implements OnInit {
   }
 
   async deleteProduct(_id: number) {
-    this.products = await this.adminService.deleteProductServ(_id);
+    await this.adminService.deleteProductServ(_id);
     await this.getProducts(); // display products after deleteing the product record
   }
 }

@@ -9,7 +9,7 @@ import { Product } from '../../models/productModels';
 })
 export class AllProductsComponent implements OnInit {
   products: Product[] = [];
-  categories: string[] = [];
+  // categories: string[] = [];
   loading: boolean = false;
   cartProducts: any[] = []; // local storage
 
@@ -27,11 +27,16 @@ export class AllProductsComponent implements OnInit {
   }
 
   addToCart(event: any) {
+
+
     if ('cart' in localStorage) {
       this.cartProducts = JSON.parse(localStorage.getItem('cart')!);
+      
+      // check if product exist or not 
       let exist = this.cartProducts.find(
-        (item) => item.item.id == event.item.id
+        item =>  item.item._id == event.item._id
       );
+   
       if (exist) {
         alert('Product is already in your cart');
       } else {
