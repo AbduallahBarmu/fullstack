@@ -4,23 +4,22 @@
       <h2 class="logo">KAVA</h2>
       <ul>
         <li routerLink="/products" routerLinkActive="active">COFFEE</li>
-
-        <li style="cursor: pointer">
-          <a
-            *ngIf="!isLogedIn()"
-            routerLink="/auth"
-            routerLinkActive="active"
-          >
-            Login
-          </a>
+        <li
+          style="cursor: pointer"
+          *ngIf="!isLogedIn()"
+          routerLink="/auth"
+          routerLinkActive="active"
+        >
+          LOGIN
         </li>
-
         <li
           routerLink="/auth"
           routerLinkActive="active"
           style="cursor: pointer"
+          *ngIf="isLogedIn()"
+          (click)="authService.logout()"
         >
-          <a *ngIf="isLogedIn()" (click)="authService.logout()"> logOut </a>
+          lOGOUT
         </li>
 
         <li routerLink="/cart">
