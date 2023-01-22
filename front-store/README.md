@@ -39,29 +39,3 @@ push from array ==> midell ware storage then ==> local storage
 
 
 
-## Cart structure(baskte)
-
-- list all cart products 
-- get items price total 
-- mins amount 
-- plus amount  
-- detect amount input change 
-- delete product 
-- clear cart 
-- get cart product length 
-
-- send cart to backEnd api 
-
-
-// delete bootstrab 
-// use promisess rx.js
-
-
-
-## taks 
-- clear add form after updating 
-- add validation on the form (do not submit if there is no data )
-- redirect admin to the dashbord page after submiting 
-- solve cart problem (only acceeping one product in the cart page )
-- display products in the home page 
-- add image to the products also in DB 
