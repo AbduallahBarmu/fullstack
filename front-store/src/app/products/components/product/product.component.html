@@ -1,15 +1,16 @@
 <div class="item">
-  <mat-card routerLink="/details/{{data._id }}">
-    <img class="product-image" src="{{data.image }}" alt="" />
-    <mat-card-title
-      ><h3>{{ data.name }}</h3></mat-card-title
-    >
-    <mat-card-content
+  <mat-card >
+    <img class="product-image" src="{{ data.image }}" alt="product-image" routerLink="/details/{{data._id }}" />
+    <mat-card-title>
+      <h3 class="product-name">{{ data.name }}</h3>
+    </mat-card-title>
+    <!-- <mat-card-content
       ><p>{{ data.description }}</p>
-    </mat-card-content>
-    <mat-card-subtitle>
+    </mat-card-content> -->
+    <mat-card-actions>
       <h4>{{ data.region }}</h4>
-    </mat-card-subtitle>
+      <span>{{ data.price }}$</span>
+    </mat-card-actions>
   </mat-card>
   <mat-card-actions>
     <button
@@ -18,7 +19,7 @@
       (click)="addProductToCart(); addButton = false" >
       Add To Basket
     </button>
-    <span>{{ data.price }}$</span>
+  
   </mat-card-actions>
 </div>
 

@@ -21,28 +21,16 @@ export class AdminService {
   
   async signup(admin: Admin) :Promise<any>{
     const {email , password } = admin
+    // check if Admin exist or not 
     const isExist = await this.findAdmin(email)
-    if(isExist){
+    if(isExist){  // if yes do not create new admin 
       return 'admin already exist'
-    }
+    } // else create new one
     const newAdmin =  new this.adminModel(admin)
     return await newAdmin.save()
   }
   
 
-  
-  ///////////////////////
-
-  //  async findAdmin({email, password}): Promise<Admin | undefined> {
-  //     const user = await this.adminModel.findOne({ email , password});
-  //     return user;
-  //   }
-
-  // async createAdmain(email:string, password:string):Promise<Admin>{
-  //   return this.adminModel.create({
-  //     email , password
-  //   })
-  // }
 
 }
 

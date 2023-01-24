@@ -13,7 +13,7 @@ export class ProductComponent implements OnInit {
   @Output() item = new EventEmitter();    // from child to parent 
 
   addButton:boolean = false;
-  amount:number = 0 ;  
+  amount:number = 1 ;  
   // baseApi:string = ''
 
 

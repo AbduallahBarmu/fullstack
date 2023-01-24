@@ -37,9 +37,8 @@ export class AllProductsComponent implements OnInit {
         item =>  item.item._id == event.item._id
       );
    
-      if (exist) {
-        alert('Product is already in your cart');
-      } else {
+      if (exist) alert('Product is already in your cart');
+      else {
         this.cartProducts.push(event);
         localStorage.setItem('cart', JSON.stringify(this.cartProducts));
       }

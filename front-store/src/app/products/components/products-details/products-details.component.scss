@@ -1,3 +1,5 @@
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200&display=swap');
+
 .box {
   width: 90%;
   margin: 100px auto;
@@ -13,6 +15,7 @@
     text-align: center;
   }
   .product_content {
+    font-family: 'Montserrat', sans-serif;
     display: table;
     width: 100%;
     ul {
@@ -28,6 +31,7 @@
   }
 
   .product_desc {
+    font-family: 'Montserrat', sans-serif;
     display: table-cell;
     padding: 16px;
   }
