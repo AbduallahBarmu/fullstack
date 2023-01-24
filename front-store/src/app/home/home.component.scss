@@ -1,0 +1,38 @@
+html body {
+  background: #faedcd;
+  font-family: "Nunito", sans-serif;
+  width: 100%;
+  height: 100vh;
+}
+
+.blurb h2 {
+  color: #283618;
+  font-weight: 100;
+  font-size: 2.5rem;
+}
+
+.blurb p {
+  color: #283618;
+  font-weight: 100;
+  font-size: 1.5rem;
+  line-height: 2;
+}
+
+img{
+   width: 100%;
+  height: 100vh;;
+}
+.content {
+  margin-top: 100px;
+  margin-bottom: 100px;
+}
+
+@media (max-width: 1200px) {
+  #headingGroup h1 {
+    font-weight: 100;
+    font-size: 3rem;
+  }
+  .blurb h2 {
+    font-size: 2rem;
+  }
+}

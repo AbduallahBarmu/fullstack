@@ -19,7 +19,12 @@ export class AdminService {
 
 
   
-  async signup(admin: Admin) :Promise<Admin>{
+  async signup(admin: Admin) :Promise<any>{
+    const {email , password } = admin
+    const isExist = await this.findAdmin(email)
+    if(isExist){
+      return 'admin already exist'
+    }
     const newAdmin =  new this.adminModel(admin)
     return await newAdmin.save()
   }

@@ -1,11 +1,10 @@
 <nav>
   <div class="container">
     <div class="content">
-      <h2 class="logo">KAVA</h2>
+      <h2 class="logo" routerLink="/home">KAVA</h2>
       <ul>
         <li routerLink="/products" routerLinkActive="active">COFFEE</li>
         <li
-          style="cursor: pointer"
           *ngIf="!isLogedIn()"
           routerLink="/auth"
           routerLinkActive="active"
@@ -15,8 +14,7 @@
         <li
           routerLink="/auth"
           routerLinkActive="active"
-          style="cursor: pointer"
-          *ngIf="isLogedIn()"
+          *ngIf="isLogedIn()" 
           (click)="authService.logout()"
         >
           lOGOUT

@@ -27,13 +27,12 @@ export class AuthComponent implements OnInit {
     }
     const email = form.value.email;
     const password = form.value.password;
-
     this.isLoading = true;
+
     if (this.isLoginMode) {
       try {
         const res = await this.authService.signIn(email, password);
-        console.log(res);
-
+        // set token in the local storage 
         localStorage.setItem('token', res.access_token);
 
         // redurect route into dashbord page
@@ -47,6 +46,7 @@ export class AuthComponent implements OnInit {
     } else {
       try {
         await this.authService.signUp(email, password);
+        
         this.isLoading = false;
       } catch (error) {
         this.errorMessage = ' SignUp Faild';

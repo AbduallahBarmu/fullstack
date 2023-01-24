@@ -15,9 +15,11 @@ import { AuthComponent } from './auth/components/auth/auth.component';
 // import { AuthModule } from './auth/auth.module';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenInterceptorService } from './auth/services/token/token-interceptor.service';
-
+import { HomeComponent } from './home/home.component';
+import { FooterComponent } from './shared/components/footer/footer.component';
+import { AdminGuardService } from './auth/services/admin-guard.service';
 @NgModule({
-  declarations: [AppComponent, AddProductFormComponent, AuthComponent],
+  declarations: [AppComponent, AddProductFormComponent, AuthComponent, HomeComponent, FooterComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -28,11 +30,13 @@ import { TokenInterceptorService } from './auth/services/token/token-interceptor
     ReactiveFormsModule,
   ],
   providers: [
+    AdminGuardService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptorService,
       multi: true,
     },
+    
   ],
 
   bootstrap: [AppComponent],

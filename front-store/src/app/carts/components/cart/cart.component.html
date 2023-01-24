@@ -1,43 +1,56 @@
-<div class="cartBox">
-  <h1 class="title">Shopping Cart</h1>
-  <div class="headCart">
-    <p class="lead">
-      You Have
-      <strong class="product-length">{{ cartProducts.length }} </strong> Items In Your Cart
-    </p>
-    <p><strong>Payment Total : </strong> $ {{ total }}</p>
-    <button class="clear-btn " (click)="clearCart()">
-      Clear Shopping Cart</button>
+<div class="container">
+  <div class="cartBox">
+    <h1 class="title">Shopping Cart</h1>
+    <div class="headCart">
+      <p class="lead">
+        You Have
+        <strong class="product-length">{{ cartProducts.length }} </strong> Items
+        In Your Cart
+      </p>
+      <p><strong>Payment Total : </strong> $ {{ total }}</p>
+      <button class="clear-btn" (click)="clearCart()">
+        Clear Shopping Cart
+      </button>
+    </div>
   </div>
-</div>
 
-<table class="table table-striped">
-  <tbody class="table-body">
-    <tr class="table-row" *ngFor="let item of cartProducts; let index = index">
-      <td>
-        <img class="product-img" src="{{item.item.image}}" alt="" routerLink="/details/{{item.item._id }}"></td>
-      <td>
-        {{ item.item.name }}
-      </td>
-      <td> $ {{ item.item.price }}</td>
-      <td>
-        <div class="quantity">
-          <button class="btn btn-dark" (click)="addAmount(index)">+</button>
-          <input
-            class="form-control"
-            type="number"
-            [(ngModel)]="item.quantity"
-            min=1
+  <table class="table table-striped">
+    <tbody class="table-body">
+      <tr
+        class="table-row"
+        *ngFor="let item of cartProducts; let index = index"
+      >
+        <td>
+          <img
+            class="product-img"
+            src="{{ item.item.image }}"
+            alt=""
+            routerLink="/details/{{ item.item._id }}"
           />
-          <button class="btn btn-dark" (click)="minsAmount(index)">-</button>
-        </div>
-      </td>
-      <td>{{ item.item.price * item.quantity }}$</td>
-      <td>
-        <button class="btn btn-danger" (click)="deleteProduct(index)">
-          Delete
-        </button>
-      </td>
-    </tr>
-  </tbody>
-</table>
+        </td>
+        <td>
+          {{ item.item.name }}
+        </td>
+        <td>$ {{ item.item.price }}</td>
+        <td>
+          <div class="quantity">
+            <button class="btn btn-dark" (click)="addAmount(index)">+</button>
+            <input
+              class="form-control"
+              type="number"
+              [(ngModel)]="item.quantity"
+              min="1"
+            />
+            <button class="btn btn-dark" (click)="minsAmount(index)">-</button>
+          </div>
+        </td>
+        <td>{{ item.item.price * item.quantity }}$</td>
+        <td>
+          <button class="delete-btn " (click)="deleteProduct(index)">
+            Delete
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
