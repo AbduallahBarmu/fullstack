@@ -9,7 +9,7 @@ export class CartsService {
 
   constructor(private http:HttpClient) { }
 
-  getAllCartsServ(param?:any){
+  getAllCartsServ(){
     let params = new HttpParams()
     // params = params.append("startdate", param?.start).append("enddate", param?.end)
     return this.http.get(environment.baseApi + 'carts', {params}) // we need to send the param as an object 

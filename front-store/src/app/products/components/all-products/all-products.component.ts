@@ -28,7 +28,8 @@ export class AllProductsComponent implements OnInit {
 
   addToCart(event: any) {
 
-
+    // console.log(event);
+    
     if ('cart' in localStorage) {
       this.cartProducts = JSON.parse(localStorage.getItem('cart')!);
       

@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { firstValueFrom } from 'rxjs';
 import { Product } from '../products/models/productModels';
+import { NgForm } from '@angular/forms';
 
 @Injectable({
   providedIn: 'root',
@@ -12,7 +13,7 @@ export class AdminService {
 
   products: Product[] = [];
 
-  createProductServ(form: any): Promise<Product[]> {
+  createProductServ(form: NgForm): Promise<Product[]> {
     return firstValueFrom(
       this.http.post<Product[]>(environment.baseApi + 'products', form)
     );
@@ -27,10 +28,10 @@ export class AdminService {
     );
   }
 
-  deleteProductServ(id: number): Promise<any> {
+  deleteProductServ(id: number): Promise<void> {
     console.log('delete');
     return firstValueFrom(
-      this.http.delete<any>(environment.baseApi + 'products/' + id)
+      this.http.delete<void>(environment.baseApi + 'products/' + id)
     );
   }
 }

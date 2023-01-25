@@ -8,7 +8,7 @@ import {Observable} from 'rxjs';
   providedIn: 'root',
 })
 export class ProductsService {
-  item: any;
+  // item: any;
 
   constructor(private http: HttpClient) {}
 
@@ -39,12 +39,12 @@ export class ProductsService {
   //   );
   // }
 
-  uploadImage(file:any):Observable<any>{
-    const formData = new FormData()
-    formData.append('file', file, file.name)
-     // Make http post request over api
-      // with formData as req
-      return this.http.post(environment.baseApi , formData)
-  }
+  // uploadImage(file:any):Observable<any>{
+  //   const formData = new FormData()
+  //   formData.append('file', file, file.name)
+  //    // Make http post request over api
+  //     // with formData as req
+  //     return this.http.post(environment.baseApi , formData)
+  // }
 
 }

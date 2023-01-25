@@ -28,9 +28,8 @@ let AdminService = class AdminService {
     async signup(admin) {
         const { email, password } = admin;
         const isExist = await this.findAdmin(email);
-        if (isExist) {
-            return 'admin already exist';
-        }
+        if (isExist)
+            return 'Admin Already Exist';
         const newAdmin = new this.adminModel(admin);
         return await newAdmin.save();
     }

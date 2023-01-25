@@ -4,8 +4,9 @@ export interface Product {
     _id:number,
     name:string,
     region:string,
-    description:string,
-    price:string,
+    price:number,
     image:string
+    description:string,
 }
+
 

@@ -11,7 +11,7 @@ import { AuthData } from '../../models/auth';
 export class AuthComponent implements OnInit {
   isLoginMode: boolean = true;
   isLoading: boolean = false; // initily we are not loading
-  errorMessage: any = null; // should hold an error message
+  errorMessage: string = ''; // should hold an error message
   authData: AuthData[] = [];
 
   constructor(public authService: AuthService, private router: Router) {}
@@ -49,7 +49,7 @@ export class AuthComponent implements OnInit {
         
         this.isLoading = false;
       } catch (error) {
-        this.errorMessage = ' SignUp Faild';
+        this.errorMessage = ' SignUp Faild :(';
         this.isLoading = false;
       }
     }

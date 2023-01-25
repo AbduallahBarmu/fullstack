@@ -11,7 +11,7 @@ import { environment } from 'src/environments/environment';
 })
 export class ProductsDetailsComponent implements OnInit {
 
-  id:any
+  id:string | null
   data:any ={} 
   loading:boolean = false; 
   baseApi: string = ''

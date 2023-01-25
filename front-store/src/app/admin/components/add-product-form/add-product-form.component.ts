@@ -18,7 +18,8 @@ export class AddProductFormComponent {
   products: Product[] = []; // Interface
   data: any = {};
   form!: FormGroup;
-  id: any;
+  id:string | null =''; 
+
   // base64: any = '';
   // file?: File 
   // shortLink: string = "";
@@ -37,6 +38,8 @@ export class AddProductFormComponent {
     this.id = this.route.snapshot.paramMap.get('id');
     // get the data and check if there is an ID  give me the data of this ID(Edit method) if not return an empty object (Add method)
     this.data = this.id ? await this.service.getProductByIdServ(this.id) : {};
+    console.log("data obj"+this.data);
+    
   }
 
   async addProduct(form: NgForm) {
@@ -54,8 +57,8 @@ export class AddProductFormComponent {
       this.router.navigate(['/dashboard']);
       alert('Great !! The product Added successfully');
     }
-    // this.form.reset();
   }
+
 
 
   // getImagePath(event:any ){
