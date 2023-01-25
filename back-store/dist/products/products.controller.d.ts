@@ -1,3 +1,4 @@
+/// <reference types="multer" />
 import { CreateProdcutsDto } from './dto/create-products';
 import { ProductsService } from './products.service';
 import { Product } from './schemas/products.schema';
@@ -9,4 +10,5 @@ export declare class ProductsController {
     createProduct(createItemDto: CreateProdcutsDto): Promise<Product>;
     deleteProduct(id: any): Promise<Product>;
     updateProduct(updateItemDto: CreateProdcutsDto, id: any): Promise<Product>;
+    handleUploadFile(file: Express.Multer.File): string;
 }

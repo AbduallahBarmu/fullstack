@@ -17,6 +17,9 @@ const common_1 = require("@nestjs/common");
 const create_products_1 = require("./dto/create-products");
 const products_service_1 = require("./products.service");
 const jwt_auth_guard_1 = require("../login/auth/guards/jwt-auth.guard");
+const platform_express_1 = require("@nestjs/platform-express");
+const multer_1 = require("multer");
+const path_1 = require("path");
 let ProductsController = class ProductsController {
     constructor(productsService) {
         this.productsService = productsService;
@@ -35,6 +38,10 @@ let ProductsController = class ProductsController {
     }
     updateProduct(updateItemDto, id) {
         return this.productsService.update(id, updateItemDto);
+    }
+    handleUploadFile(file) {
+        console.log('file', file);
+        return 'file uploded to the API ';
     }
 };
 __decorate([
@@ -75,6 +82,24 @@ __decorate([
     __metadata("design:paramtypes", [create_products_1.CreateProdcutsDto, Object]),
     __metadata("design:returntype", Promise)
 ], ProductsController.prototype, "updateProduct", null);
+__decorate([
+    (0, common_1.Post)('file'),
+    (0, common_1.UseInterceptors)((0, platform_express_1.FileInterceptor)('file', {
+        storage: (0, multer_1.diskStorage)({
+            destination: './public/images',
+            filename: (req, file, callback) => {
+                const uniqueSuffix = Date.now + '-' + Math.round(Math.random() * 1e9);
+                const ext = (0, path_1.extname)(file.originalname);
+                const filename = `${uniqueSuffix}${ext}`;
+                callback(null, filename);
+            },
+        }),
+    })),
+    __param(0, (0, common_1.UploadedFile)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object]),
+    __metadata("design:returntype", void 0)
+], ProductsController.prototype, "handleUploadFile", null);
 ProductsController = __decorate([
     (0, common_1.Controller)('products'),
     __metadata("design:paramtypes", [products_service_1.ProductsService])
