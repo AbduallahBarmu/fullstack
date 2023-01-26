@@ -15,7 +15,7 @@ export class Product{
     @Prop()
     description: String;
     @Prop()
-    image:string;  
+    productImage:string;  
 }
 
 export const productSchema = SchemaFactory.createForClass(Product) 

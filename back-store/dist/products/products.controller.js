@@ -12,14 +12,26 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.ProductsController = void 0;
+exports.ProductsController = exports.storage = void 0;
 const common_1 = require("@nestjs/common");
 const create_products_1 = require("./dto/create-products");
 const products_service_1 = require("./products.service");
 const jwt_auth_guard_1 = require("../login/auth/guards/jwt-auth.guard");
+const rxjs_1 = require("rxjs");
 const platform_express_1 = require("@nestjs/platform-express");
 const multer_1 = require("multer");
 const path_1 = require("path");
+exports.storage = {
+    storage: (0, multer_1.diskStorage)({
+        destination: './public/images',
+        filename: (req, file, callback) => {
+            const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1e9);
+            const ext = (0, path_1.extname)(file.originalname);
+            const filename = `${uniqueSuffix}${ext}`;
+            callback(null, filename);
+        },
+    }),
+};
 let ProductsController = class ProductsController {
     constructor(productsService) {
         this.productsService = productsService;
@@ -40,8 +52,7 @@ let ProductsController = class ProductsController {
         return this.productsService.update(id, updateItemDto);
     }
     handleUploadFile(file) {
-        console.log('file', file);
-        return 'file uploded to the API ';
+        return (0, rxjs_1.of)({ imagePath: file.path });
     }
 };
 __decorate([
@@ -83,22 +94,12 @@ __decorate([
     __metadata("design:returntype", Promise)
 ], ProductsController.prototype, "updateProduct", null);
 __decorate([
-    (0, common_1.Post)('file'),
-    (0, common_1.UseInterceptors)((0, platform_express_1.FileInterceptor)('file', {
-        storage: (0, multer_1.diskStorage)({
-            destination: './public/images',
-            filename: (req, file, callback) => {
-                const uniqueSuffix = Date.now + '-' + Math.round(Math.random() * 1e9);
-                const ext = (0, path_1.extname)(file.originalname);
-                const filename = `${uniqueSuffix}${ext}`;
-                callback(null, filename);
-            },
-        }),
-    })),
+    (0, common_1.Post)('upload'),
+    (0, common_1.UseInterceptors)((0, platform_express_1.FileInterceptor)('file', exports.storage)),
     __param(0, (0, common_1.UploadedFile)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Object]),
-    __metadata("design:returntype", void 0)
+    __metadata("design:returntype", rxjs_1.Observable)
 ], ProductsController.prototype, "handleUploadFile", null);
 ProductsController = __decorate([
     (0, common_1.Controller)('products'),

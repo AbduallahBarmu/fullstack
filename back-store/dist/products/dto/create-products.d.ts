@@ -3,5 +3,5 @@ export declare class CreateProdcutsDto {
     readonly region: string;
     readonly price: number;
     readonly description: string;
-    readonly image: string;
+    readonly productImage: string;
 }

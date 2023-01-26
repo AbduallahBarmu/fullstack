@@ -32,7 +32,7 @@ __decorate([
 __decorate([
     (0, mongoose_1.Prop)(),
     __metadata("design:type", String)
-], Product.prototype, "image", void 0);
+], Product.prototype, "productImage", void 0);
 Product = __decorate([
     (0, mongoose_1.Schema)()
 ], Product);

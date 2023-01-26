@@ -35,5 +35,7 @@ export class ProductsService {
     return await this.productModel.findByIdAndUpdate(id, product, {
       new: true,
     });
+
+   
   }
 }
