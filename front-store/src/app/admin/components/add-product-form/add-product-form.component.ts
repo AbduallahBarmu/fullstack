@@ -1,14 +1,17 @@
-import { Component } from '@angular/core';
+   import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Product } from '../../../products/models/productModels';
 // services
 import { AdminService } from '../../admin.service';
 import { ProductsService } from 'src/app/products/services/products.service';
-
+import { Observable, firstValueFrom } from 'rxjs';
 import { FormGroup } from '@angular/forms';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 
+
+import { HttpClient } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
 @Component({
   selector: 'app-add-product-form',
   templateUrl: './add-product-form.component.html',
@@ -20,18 +23,16 @@ export class AddProductFormComponent {
   form!: FormGroup;
   id:string | null =''; 
 
-  // base64: any = '';
-  // file?: File 
-  // shortLink: string = "";
-  // loading: boolean = false; 
-  
 
   constructor(
     private route: ActivatedRoute,
     private adminService: AdminService,
     private service: ProductsService,
-    private router: Router
+    private router: Router, 
+    private http:HttpClient
   ) {}
+
+
 
   async ngOnInit() {
     // this root is to get product id by using params
@@ -42,8 +43,13 @@ export class AddProductFormComponent {
     
   }
 
-  async addProduct(form: NgForm) {
-    console.log(' product submitted', form);
+  async addProduct(form: any) {
+    // console.log(' product submitted', form);
+    if(this.image){
+      const res = await this.uploadFileService()
+      form.image =  environment.baseApi+res.data
+    }
+    
     if (this.id) {
       // in case there is an ID means we have data in the form so, lets update it
       await this.adminService.updateProductServ(this.id, form);
@@ -60,27 +66,26 @@ export class AddProductFormComponent {
   }
 
 
+ image : any 
+ async onFileSelected(event:any){
+   console.log(event);
+   this.image = event.target.files[0]
 
-  // getImagePath(event:any ){
-  //   const file = event.target.files[0]
-  //   const reader = new FileReader();
-  //   reader.readAsDataURL(file)
-  //   reader.onload= ()=>{
-  //     this.base64 = reader.result
-  //     this.form.get('image')?.setValue(this.base64)
-  //     console.log(this.base64);
-  //   }
+   console.log( 'image: ',this.image );
   
+  //  return await this.adminService.uploadFileService()
+  }
+
+
   
-    // this.file = <File> event.target.files[0].name // this path from event object in the console
-    // // console.log(event.target.files[0].name);
-    // this.service.uploadImage(this.file).subscribe(
-    //   (event: any) => {
-    //     if(typeof(event) === 'object'){
-    //       //short link via api response 
-    //       this.shortLink = event.link
-    //     }
-    //   }
-    // )
-  //}
+  uploadFileService(): Promise<any>{
+    const formData = new FormData();
+    formData.append('file', this.image);
+    return firstValueFrom(
+      this.http.post<any>( environment.baseApi + 'products/upload', formData)
+    )
+   }  
+
+
+
 }

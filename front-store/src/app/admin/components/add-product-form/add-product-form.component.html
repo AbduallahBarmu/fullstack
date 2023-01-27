@@ -45,11 +45,15 @@
   </div>
   <div class="upload-image">
     <input
+     
+      accept="image/*"
       type="file"
       class="form-control"
       placeholder="Enter Image URL"
       ngModel
       name="image"
+      (change)="onFileSelected($event)"
+      
       [(ngModel)]="data.image"
       required
     />

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
-import { firstValueFrom } from 'rxjs';
+import { Observable, firstValueFrom } from 'rxjs';
 import { Product } from '../products/models/productModels';
 import { NgForm } from '@angular/forms';
 
@@ -34,4 +34,17 @@ export class AdminService {
       this.http.delete<void>(environment.baseApi + 'products/' + id)
     );
   }
+
+
+  // image : any 
+  // uploadFileService(): Promise<any>{
+  //   const formData = new FormData();
+  //     formData.append('file', this.image);
+  
+  //   return firstValueFrom(
+  //     this.http.post<any>( environment.baseApi + 'products/upload', formData)
+  //   )
+  //  }  
+
+
 }

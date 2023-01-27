@@ -9,7 +9,8 @@ import {
   UseGuards,
   UseInterceptors,
   UploadedFile,
-  Request
+  Res,
+  HttpStatus
 } from '@nestjs/common';
 import { CreateProdcutsDto } from './dto/create-products';
 import { ProductsService } from './products.service';
@@ -25,10 +26,13 @@ import { FileInterceptor } from '@nestjs/platform-express';
 import { diskStorage } from 'multer';
 import { extname } from 'path';
 
+// import * as path from 'path'
+
+
 // File interceptor implementation
 export const storage = {
   storage: diskStorage({
-    destination: './public/images',
+    destination: './public',
     filename: (req, file, callback) => {
       const uniqueSuffix: string =
         Date.now() + '-' + Math.round(Math.random() * 1e9);
@@ -82,26 +86,21 @@ export class ProductsController {
   // @UseGuards(JwtAuthGuard)
   @Post('upload')
   @UseInterceptors(FileInterceptor('file', storage)) // storage it is an Object
-  handleUploadFile( @UploadedFile() file: Express.Multer.File ): Observable<Object> {
-    // console.log('file', file);
+
+
+  handleUploadFile( @Res() res  , @UploadedFile() file: Express.Multer.File ) {
+  
     // return 'file uploded to the API successfully '
-    return of({ imagePath: file.path });
-    
+    // return of({ imagePath: file.path });
+ 
+    return res.status(HttpStatus.OK).json({
+      success:true, 
+      data:file.filename
+    })
+
   }
 
-  // @UseGuards(JwtAuthGuard)
-  // @Post('upload')
-  // @UseInterceptors(FileInterceptor('file', storage)) // storage it is an Object
-  // handleUploadFile(
-  //   @UploadedFile() file , @Request() req): Observable<Object> {
-    
-  //   const admin: ProductInterface = req.admin.admin; 
-  //   return this.productsService.update(admin.id , {productImage:file.filename}).pipe(
-  //     map( (admin:AdminInterface) => ({productImage :admin.productImage}))
-  //   )
-  //   return of({ imagePath: file.path });
-  // }
-
+ 
 
 
 }
