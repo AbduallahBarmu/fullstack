@@ -10,7 +10,7 @@ import {
   UseInterceptors,
   UploadedFile,
   Res,
-  HttpStatus
+  HttpStatus,
 } from '@nestjs/common';
 import { CreateProdcutsDto } from './dto/create-products';
 import { ProductsService } from './products.service';
@@ -27,7 +27,6 @@ import { diskStorage } from 'multer';
 import { extname } from 'path';
 
 // import * as path from 'path'
-
 
 // File interceptor implementation
 export const storage = {
@@ -82,26 +81,13 @@ export class ProductsController {
     return this.productsService.update(id, updateItemDto);
   }
 
-
   // @UseGuards(JwtAuthGuard)
   @Post('upload')
   @UseInterceptors(FileInterceptor('file', storage)) // storage it is an Object
-
-
-  handleUploadFile( @Res() res  , @UploadedFile() file: Express.Multer.File ) {
-  
-    // return 'file uploded to the API successfully '
-    // return of({ imagePath: file.path });
- 
+  handleUploadFile(@Res() res, @UploadedFile() file: Express.Multer.File) {
     return res.status(HttpStatus.OK).json({
-      success:true, 
-      data:file.filename
-    })
-
+      success: true,
+      data: file.filename,
+    });
   }
-
- 
-
-
 }
-

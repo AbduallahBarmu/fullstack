@@ -9,7 +9,7 @@ import { AuthData } from '../../models/auth';
   styleUrls: ['./auth.component.scss'],
 })
 export class AuthComponent implements OnInit {
-  isLoginMode: boolean = true;
+  isLoginMode: boolean = false;
   isLoading: boolean = false; // initily we are not loading
   errorMessage: string = ''; // should hold an error message
   authData: AuthData[] = [];
