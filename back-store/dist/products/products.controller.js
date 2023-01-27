@@ -53,7 +53,7 @@ let ProductsController = class ProductsController {
     handleUploadFile(res, file) {
         return res.status(common_1.HttpStatus.OK).json({
             success: true,
-            data: file.filename,
+            data: file.filename
         });
     }
 };

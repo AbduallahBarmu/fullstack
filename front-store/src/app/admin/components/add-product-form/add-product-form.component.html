@@ -44,6 +44,9 @@
     ></textarea>
   </div>
   <div class="upload-image">
+    <div>
+      <img src="{{data.image}}" alt="">
+    </div>
     <input
      
       accept="image/*"
@@ -55,7 +58,7 @@
       (change)="onFileSelected($event)"
       
       [(ngModel)]="data.image"
-      required
+  
     />
   </div>
   <input

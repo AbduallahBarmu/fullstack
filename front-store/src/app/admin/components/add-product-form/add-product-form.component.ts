@@ -20,6 +20,7 @@ import { environment } from 'src/environments/environment';
 export class AddProductFormComponent {
   products: Product[] = []; // Interface
   data: any = {};
+  image : any
   form!: FormGroup;
   id:string | null =''; 
 
@@ -44,9 +45,9 @@ export class AddProductFormComponent {
   }
 
   async addProduct(form: any) {
-    // console.log(' product submitted', form);
     if(this.image){
       const res = await this.uploadFileService()
+      debugger
       form.image =  environment.baseApi+res.data
     }
     
@@ -66,13 +67,11 @@ export class AddProductFormComponent {
   }
 
 
- image : any 
+
  async onFileSelected(event:any){
    console.log(event);
-   this.image = event.target.files[0]
 
-   console.log( 'image: ',this.image );
-  
+   this.image = event.target.files[0]
   //  return await this.adminService.uploadFileService()
   }
 
@@ -80,7 +79,10 @@ export class AddProductFormComponent {
   
   uploadFileService(): Promise<any>{
     const formData = new FormData();
+   
     formData.append('file', this.image);
+   
+
     return firstValueFrom(
       this.http.post<any>( environment.baseApi + 'products/upload', formData)
     )

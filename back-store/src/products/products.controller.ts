@@ -87,7 +87,7 @@ export class ProductsController {
   handleUploadFile(@Res() res, @UploadedFile() file: Express.Multer.File) {
     return res.status(HttpStatus.OK).json({
       success: true,
-      data: file.filename,
+      data: file.filename
     });
   }
 }

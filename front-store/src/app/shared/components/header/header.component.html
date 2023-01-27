@@ -12,20 +12,19 @@
           LOGIN
         </li>
         <li
-          routerLink="/auth"
-          routerLinkActive="active"
-          *ngIf="isLogedIn()" 
-          (click)="authService.logout()"
-        >
-          LOGOUT
-        </li>
-        <li
         routerLink = "/dashboard"
         *ngIf="isLogedIn()"
         >
         DASHBOARD 
         </li>
-
+        <li
+        routerLink="/auth"
+        routerLinkActive="active"
+        *ngIf="isLogedIn()" 
+        (click)="authService.logout()"
+      >
+        LOGOUT
+      </li>
         <li routerLink="/cart">
           <mat-icon class="cart-icon">shopping_cart</mat-icon>
         </li>

@@ -39,8 +39,7 @@ export class AdminService {
   // image : any 
   // uploadFileService(): Promise<any>{
   //   const formData = new FormData();
-  //     formData.append('file', this.image);
-  
+  //   formData.append('file', this.image);
   //   return firstValueFrom(
   //     this.http.post<any>( environment.baseApi + 'products/upload', formData)
   //   )
