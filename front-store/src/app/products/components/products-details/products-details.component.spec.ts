@@ -4,6 +4,7 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 // import { RouterModule } from '@angular/router';
 import { ProductsDetailsComponent } from './products-details.component';
+import { SpinnerComponent } from 'src/app/shared/components/spinner/spinner.component';
 
 describe('ProductsDetailsComponent', () => {
   let component: ProductsDetailsComponent;
@@ -11,7 +12,7 @@ describe('ProductsDetailsComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ProductsDetailsComponent],
+      declarations: [ProductsDetailsComponent, SpinnerComponent],
       imports: [HttpClientTestingModule, RouterTestingModule],
     }).compileComponents();
   });
