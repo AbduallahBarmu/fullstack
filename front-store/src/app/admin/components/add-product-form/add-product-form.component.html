@@ -45,10 +45,9 @@
   </div>
   <div class="upload-image">
     <div>
-      <img src="{{data.image}}" alt="">
+      <!-- <img src="{{data.image}}" alt=""> -->
     </div>
     <input
-     
       accept="image/*"
       type="file"
       class="form-control"
@@ -56,9 +55,7 @@
       ngModel
       name="image"
       (change)="onFileSelected($event)"
-      
       [(ngModel)]="data.image"
-  
     />
   </div>
   <input

@@ -2,59 +2,52 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HeaderComponent } from './components/header/header.component';
 import { RouterModule } from '@angular/router';
-import { HttpClientModule } from '@angular/common/http'
+import { HttpClientModule } from '@angular/common/http';
 // import { BrowserModule } from '@angular/platform-browser';
 import { SpinnerComponent } from './components/spinner/spinner.component';
 import { SelectComponent } from './components/select/select.component';
-import { FormsModule} from '@angular/forms'
+import { FormsModule } from '@angular/forms';
 
 // material UI
 import { MatTableModule } from '@angular/material/table';
-import {MatCardModule} from '@angular/material/card';
-import {MatButtonModule} from '@angular/material/button';
-import {MatToolbarModule} from '@angular/material/toolbar';
-import {MatIconModule} from '@angular/material/icon';
-import {MatTable} from '@angular/material/table';
-import {MatFormFieldModule} from '@angular/material/form-field';
+import { MatCardModule } from '@angular/material/card';
+import { MatButtonModule } from '@angular/material/button';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatIconModule } from '@angular/material/icon';
+import { MatTable } from '@angular/material/table';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { SharedService } from './services/shared.service';
 
 @NgModule({
-  declarations: [
-    HeaderComponent,
-    SpinnerComponent,
-    SelectComponent,
-    
-    
-  ],
+  declarations: [HeaderComponent, SpinnerComponent, SelectComponent],
+  providers: [SharedService],
   imports: [
     CommonModule,
     RouterModule,
     FormsModule,
-    HttpClientModule, 
-    
+    HttpClientModule,
+
     // material UI
     MatTableModule,
     MatCardModule,
     MatButtonModule,
     MatIconModule,
     MatToolbarModule,
-    MatFormFieldModule
-   
-  
+    MatFormFieldModule,
   ],
-  exports : [
+  exports: [
     HeaderComponent,
     SpinnerComponent,
     RouterModule,
-    SelectComponent, 
-    FormsModule, 
-
+    SelectComponent,
+    FormsModule,
+    // material UI
     MatTableModule,
     MatCardModule,
     MatButtonModule,
     MatToolbarModule,
     MatIconModule,
     MatTable,
-
-  ]
+  ],
 })
-export class SharedModule { }
+export class SharedModule {}

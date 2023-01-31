@@ -9,7 +9,7 @@ import { AuthData } from '../../models/auth';
   styleUrls: ['./auth.component.scss'],
 })
 export class AuthComponent implements OnInit {
-  isLoginMode: boolean = false;
+  isLoginMode: boolean = true;
   isLoading: boolean = false; // initily we are not loading
   errorMessage: string = ''; // should hold an error message
   authData: AuthData[] = [];
@@ -32,12 +32,12 @@ export class AuthComponent implements OnInit {
     if (this.isLoginMode) {
       try {
         const res = await this.authService.signIn(email, password);
-        // set token in the local storage 
+        // set token in the local storage
         localStorage.setItem('token', res.access_token);
 
         // redurect route into dashbord page
         this.router.navigate(['/dashboard']);
-        
+
         this.isLoading = false;
       } catch (error) {
         this.errorMessage = ' LogIn Faild :(';
@@ -46,7 +46,7 @@ export class AuthComponent implements OnInit {
     } else {
       try {
         await this.authService.signUp(email, password);
-        
+
         this.isLoading = false;
       } catch (error) {
         this.errorMessage = ' SignUp Faild :(';

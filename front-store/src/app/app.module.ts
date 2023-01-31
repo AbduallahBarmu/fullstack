@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { SharedModule } from './shared/shared.module';
 
+import { HttpClientModule } from '@angular/common/http';
+
 // material UI
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -19,8 +21,15 @@ import { HomeComponent } from './home/home.component';
 import { FooterComponent } from './shared/components/footer/footer.component';
 import { AdminGuardService } from './auth/services/admin-guard.service';
 @NgModule({
-  declarations: [AppComponent, AddProductFormComponent, AuthComponent, HomeComponent, FooterComponent],
+  declarations: [
+    AppComponent,
+    AddProductFormComponent,
+    AuthComponent,
+    HomeComponent,
+    FooterComponent,
+  ],
   imports: [
+    HttpClientModule,
     BrowserModule,
     AppRoutingModule,
     ProductsModule,
@@ -36,7 +45,6 @@ import { AdminGuardService } from './auth/services/admin-guard.service';
       useClass: TokenInterceptorService,
       multi: true,
     },
-    
   ],
 
   bootstrap: [AppComponent],
