@@ -4,6 +4,7 @@ import { AddProductFormComponent } from './add-product-form.component';
 // unit testing
 import { RouterModule } from '@angular/router';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { FormsModule } from '@angular/forms';
 
 describe('AddProductFormComponent', () => {
   let component: AddProductFormComponent;
@@ -12,7 +13,7 @@ describe('AddProductFormComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [AddProductFormComponent],
-      imports: [HttpClientTestingModule, RouterModule.forRoot([])],
+      imports: [HttpClientTestingModule, FormsModule, RouterModule.forRoot([])],
     }).compileComponents();
 
     fixture = TestBed.createComponent(AddProductFormComponent);

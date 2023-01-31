@@ -8,7 +8,6 @@ import { AdminGuardService } from './services/admin-guard.service';
 @NgModule({
   declarations: [],
   imports: [CommonModule, SharedModule],
-  // exports:[AuthService]
   providers: [AuthService, TokenInterceptorService, AdminGuardService],
 })
 export class AuthModule {}
