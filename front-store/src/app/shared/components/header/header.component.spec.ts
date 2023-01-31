@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { HeaderComponent } from './header.component';
+import { MatIconModule } from '@angular/material/icon';
 
 describe('HeaderComponent', () => {
   let component: HeaderComponent;
@@ -9,7 +10,7 @@ describe('HeaderComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [HeaderComponent],
-      imports: [HttpClientTestingModule],
+      imports: [HttpClientTestingModule, MatIconModule],
     }).compileComponents();
   });
 
