@@ -26,7 +26,7 @@ export class DashboardComponent implements OnInit {
     this.products = await this.service.getAllProductsServ();
   }
 
-  async deleteProduct(_id: number) {
+  async deleteProduct(_id: string) {
     await this.adminService.deleteProductServ(_id);
     await this.getProducts(); // display products after deleteing the product record
   }
