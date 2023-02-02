@@ -4,8 +4,8 @@ import {
   HttpTestingController,
 } from '@angular/common/http/testing';
 import { ProductsService } from './products.service';
-
 import { Product } from '../models/productModels';
+import { environment } from 'src/environments/environment';
 
 fdescribe('ProductsService', () => {
   let service: ProductsService;
@@ -26,32 +26,25 @@ fdescribe('ProductsService', () => {
   });
 
   // unit testing
+  it('should return all products', () => {
+    const productResults: Product[] = [
+      {
+        _id: '212121',
+        name: 'new product',
+        region: 'region 1',
+        price: 12,
+        image: 'img 1',
+        description: 'Product 1 description',
+      },
+    ];
 
-  it('should return a products', () => {
     service.getAllProductsServ().then((result) => {
       expect(result).toBeTruthy();
+      expect(result.length).toEqual(1);
+      console.log('result verified');
     });
+    const req = httpMock.expectOne(environment.baseApi + 'products');
+    expect(req.request.method).toBe('GET');
+    req.flush(productResults);
   });
-
-  // let httpClinetSpy: jasmine.SpyObj<HttpClient>;
-  // beforeEach(() => {
-  //   httpClinetSpy = jasmine.createSpyObj('HttpClient', ['get']);
-  // });
-
-  // // Good Cases:
-  // // case 1 :
-  // it('should get All product from API', () => {
-  //   const expectedGetAllProducts = new ProductsService(httpClinetSpy);
-  //   const getProductsResult = expectedGetAllProducts.getAllProductsServ();
-  //   expect(getProductsResult).toBe(<Promise<Product[]>>)
-  // });
-
-  // // case 2
-  // it('should get product by ID',() =>{
-  //   // const product:[] = []
-  //   // const products = product
-  //   const expectGetProductById = new ProductsService(httpClinetSpy)
-  //   const productByIdResult = expectGetProductById.getProductByIdServ('id223344')
-  //   expect(productByIdResult).toBe(<Promise<Product[]>>)
-  // })
 });
