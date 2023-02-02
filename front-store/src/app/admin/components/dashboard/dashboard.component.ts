@@ -1,7 +1,7 @@
 import { Component, OnInit, Output, Input, EventEmitter } from '@angular/core';
 import { ProductsService } from '../../../products/services/products.service';
 import { Product } from '../../../products/models/productModels';
-import { AdminService } from '../../admin.service';
+import { AdminService } from '../../services/admin.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -11,14 +11,12 @@ import { AdminService } from '../../admin.service';
 export class DashboardComponent implements OnInit {
   products: Product[] = []; // interface
 
-
   @Output() newProductEvent = new EventEmitter<Product[]>();
 
   constructor(
     private service: ProductsService,
     private adminService: AdminService
-  ) 
-  {}
+  ) {}
 
   ngOnInit(): void {
     this.getProducts();

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AdminService } from 'src/app/admin/admin.service';
+import { AdminService } from 'src/app/admin/services/admin.service';
 import { AuthService } from 'src/app/auth/services/auth.service';
 @Component({
   selector: 'app-header',
@@ -10,7 +10,11 @@ import { AuthService } from 'src/app/auth/services/auth.service';
 export class HeaderComponent implements OnInit {
   //  isLogedIn:boolean = true
 
-  constructor(private route: Router, public authService: AuthService , private adminService:AdminService) {}
+  constructor(
+    private route: Router,
+    public authService: AuthService,
+    private adminService: AdminService
+  ) {}
 
   ngOnInit(): void {}
 

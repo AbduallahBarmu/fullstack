@@ -8,6 +8,8 @@ describe('DashboardComponent', () => {
   let component: DashboardComponent;
   let fixture: ComponentFixture<DashboardComponent>;
 
+  //UT
+
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [DashboardComponent],
@@ -22,4 +24,12 @@ describe('DashboardComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  // unit testing:
+
+  /*
+case2: Delete Product
+  will take the recored of product by id from product[] 
+  send a req to the post service 
+  */
 });

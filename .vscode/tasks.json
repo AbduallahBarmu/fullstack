@@ -1,0 +1,14 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "npm",
+			"script": "build",
+			"path": "front-store",
+			"group": "build",
+			"problemMatcher": [],
+			"label": "npm: build - front-store",
+			"detail": "ng build"
+		}
+	]
+}

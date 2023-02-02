@@ -20,10 +20,17 @@ describe('ProductsDetailsComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(ProductsDetailsComponent);
     component = fixture.componentInstance;
+
     fixture.detectChanges();
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  // unit testing
+  // case 1
+  // it('should return display product properties ', () => {
+  //   expect().toBe();
+  // });
 });

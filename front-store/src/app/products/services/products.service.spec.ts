@@ -1,18 +1,24 @@
 import { TestBed } from '@angular/core/testing';
-
+import {
+  HttpClientTestingModule,
+  HttpTestingController,
+} from '@angular/common/http/testing';
 import { ProductsService } from './products.service';
-import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 import { Product } from '../models/productModels';
 
-describe('ProductsService', () => {
+fdescribe('ProductsService', () => {
   let service: ProductsService;
+  //UT
+  let httpMock: HttpTestingController;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule],
     });
     service = TestBed.inject(ProductsService);
+    // UT
+    httpMock = TestBed.inject(HttpTestingController);
   });
 
   it('should be created', () => {
@@ -20,6 +26,13 @@ describe('ProductsService', () => {
   });
 
   // unit testing
+
+  it('should return a products', () => {
+    service.getAllProductsServ().then((result) => {
+      expect(result).toBeTruthy();
+    });
+  });
+
   // let httpClinetSpy: jasmine.SpyObj<HttpClient>;
   // beforeEach(() => {
   //   httpClinetSpy = jasmine.createSpyObj('HttpClient', ['get']);
