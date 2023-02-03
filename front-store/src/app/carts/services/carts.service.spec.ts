@@ -1,43 +1,52 @@
 import { TestBed } from '@angular/core/testing';
-
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { CartsService } from './carts.service';
-import { HttpClientTestingModule } from '@angular/common/http/testing';
-import { Observable } from 'rxjs';
+import {
+  HttpClientTestingModule,
+  HttpTestingController,
+} from '@angular/common/http/testing';
+import { environment } from 'src/environments/environment';
+import { cartProduct } from 'src/app/products/models/cartModels';
 
 describe('CartsService', () => {
   let service: CartsService;
+  // UT
+  let httpMok: HttpTestingController;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule],
     });
     service = TestBed.inject(CartsService);
+    // UT
+    httpMok = TestBed.inject(HttpTestingController);
   });
 
   it('should be created', () => {
     expect(service).toBeTruthy();
   });
 
-  // unit testing
-  //   let httpClinetSpy: jasmine.SpyObj<HttpClient>;
+  // UT
+  it('should return all carts ', () => {
+    let params = new HttpParams();
+    const cartResults: cartProduct[] = [
+      // {
+      //   _id: '212121',
+      //   name: 'new product',
+      //   region: 'region 1',
+      //   price: 12,
+      //   image: 'img 1',
+      //   description: 'Product 1 description',
+      // },
+    ];
 
-  //   beforeEach(() => {
-  //     httpClinetSpy = jasmine.createSpyObj('HttpClient', ['get']);
-  //   });
-  //   // case 1 :
-  //   it('should get cart', () => {
-  //     const expectedGetCarts = new CartsService(httpClinetSpy);
-  //     const getCartsResult = expectedGetCarts.getAllCartsServ()
+    service.getAllCartsServ().subscribe((result) => {
+      expect(result).toBeTruthy();
+    });
 
-  //     expect(getCartsResult).toBe(<Observable<Object>>)
-
-  //   })
-
-  //   it('should delete cart by id ', () => {
-  //     const expectedDeleteCartById = new CartsService(httpClinetSpy);
-  //     const deleteCartByIdResult = expectedDeleteCartById.deleteRecordServ(123456)
-
-  //     expect(deleteCartByIdResult).toBe(<Observable<Object>>)
-
-  //   })
+    const req = httpMok.expectOne(environment.baseApi + 'carts');
+    expect(req.request.method).toBe('GET');
+    //flush fack req
+    req.flush({});
+  });
 });

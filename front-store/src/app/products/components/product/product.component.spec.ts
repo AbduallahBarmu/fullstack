@@ -19,6 +19,7 @@ describe('ProductComponent', () => {
     const productServiceSpy = jasmine.createSpyObj<ProductsService>([
       'getAllProductsServ',
     ]);
+
     //direct spyObj to
     productServiceSpy.getAllProductsServ.and.callFake(function (): any {
       return of({
@@ -52,6 +53,8 @@ describe('ProductComponent', () => {
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
+
+  // case 1: Ensure the component is successfully created
   it('should create product', fakeAsync(() => {
     // call ngOnInit
     component.ngOnInit();

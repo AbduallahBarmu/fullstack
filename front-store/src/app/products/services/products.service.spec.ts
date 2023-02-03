@@ -7,7 +7,7 @@ import { ProductsService } from './products.service';
 import { Product } from '../models/productModels';
 import { environment } from 'src/environments/environment';
 
-fdescribe('ProductsService', () => {
+describe('ProductsService', () => {
   let service: ProductsService;
   //UT
   let httpMock: HttpTestingController;

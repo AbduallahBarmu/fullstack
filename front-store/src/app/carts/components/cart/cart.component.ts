@@ -38,6 +38,13 @@ export class CartComponent implements OnInit {
     localStorage.setItem('cart', JSON.stringify(this.cartProducts));
   }
 
+  getCartTotal() {
+    this.total = 0;
+    this.cartProducts.forEach((element) => {
+      this.total += element.item.price * element.quantity;
+    });
+  }
+
   deleteProduct(index: number) {
     this.cartProducts.splice(index, 1);
     this.getCartTotal();
@@ -48,15 +55,5 @@ export class CartComponent implements OnInit {
     this.cartProducts = [];
     this.getCartTotal();
     localStorage.setItem('cart', JSON.stringify(this.cartProducts));
-  }
-
-  getCartTotal() {
-    this.total = 0;
-    this.cartProducts.forEach(element => {
-      this.total += element.item.price * element.quantity;
-    });
-        
-        
-    
   }
 }
