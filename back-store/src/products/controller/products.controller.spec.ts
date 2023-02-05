@@ -7,6 +7,7 @@ import { productsStub } from 'test/stubs/products.stub';
 import { CreateProdcutsDto } from '../dto/create-products';
 
 jest.mock('../__mocks__/products.service');
+
 describe('ProductsController', () => {
   let productsController: ProductsController;
   let productsService: ProductsService;
@@ -23,9 +24,9 @@ describe('ProductsController', () => {
     jest.clearAllMocks();
   });
 
-  // it('should be defined', () => {
-  //   expect(productsController).toBeDefined();
-  // });
+  it('should be defined', () => {
+    expect(productsController).toBeDefined();
+  });
 });
 
 /*
@@ -122,10 +123,45 @@ describe('createProduct', () => {
       );
     });
 
-    test('then it should call productService', () => {
+    test('then it should return a product', () => {
+      expect(product).toEqual(productsStub());
+    });
+  });
+});
+
+/*
+ case 4: 
+   - make sure thate we are calling  updateProduct  on the  updateProduct service 
+   - expect that we return a updated product
+*/
+
+describe('updateProduct', () => {
+  let productsController: ProductsController;
+  let productsService: ProductsService;
+  describe('when update product called ', () => {
+    let product: Product;
+    let updateProdcutsDto: CreateProdcutsDto;
+
+    beforeEach(async () => {
+      updateProdcutsDto = {
+        id: '11223344',
+        name: 'hola',
+        region: 'region',
+        description: 'des',
+        price: 200,
+        image: 'img',
+      };
+
+      product = await productsController.updateProduct(
+        updateProdcutsDto,
+        productsStub().id,
+      );
+    });
+
+    test('then it should call updateProduct service', () => {
       expect(productsService.createProduct).toHaveBeenCalledWith(
-        createProdcutsDto.name,
-        createProdcutsDto.region,
+        updateProdcutsDto.name,
+        updateProdcutsDto.region,
       );
     });
 
@@ -134,3 +170,9 @@ describe('createProduct', () => {
     });
   });
 });
+
+/*
+ case 5: 
+   - make sure thate we are calling  deleteProduct  on the  deleteProduct service 
+   - expect that we return a delete product
+*/
