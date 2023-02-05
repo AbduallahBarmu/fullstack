@@ -1,0 +1,1 @@
+{"version":3,"file":"products.stub.js","sourceRoot":"","sources":["../../../test/stubs/products.stub.ts"],"names":[],"mappings":";;;AAEO,MAAM,YAAY,GAAG,GAAY,EAAE;IACxC,OAAO;QACL,EAAE,EAAE,UAAU;QACd,IAAI,EAAE,QAAQ;QACd,MAAM,EAAE,eAAe;QACvB,KAAK,EAAE,GAAG;QACV,WAAW,EAAE,cAAc;QAC3B,KAAK,EAAE,YAAY;KACpB,CAAC;AACJ,CAAC,CAAC;AATW,QAAA,YAAY,gBASvB"}

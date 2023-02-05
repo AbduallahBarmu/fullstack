@@ -11,11 +11,11 @@ import {
   UploadedFile,
   Res,
   HttpStatus,
+  Inject,
 } from '@nestjs/common';
 import { CreateProdcutsDto } from '../dto/create-products';
 import { ProductsService } from '../services/products.service';
 import { ProductInterface } from '../interfaces/products.interface';
-// import { ProductInterface } from './interfaces/products.interface'
 
 import { Product } from '../schemas/products.schema';
 import { JwtAuthGuard } from 'src/login/auth/guards/jwt-auth.guard';
@@ -47,13 +47,11 @@ export const storage = {
 export class ProductsController {
   constructor(private readonly productsService: ProductsService) {}
 
-  // @UseGuards(JwtAuthGuard)
   @Get()
   async getAllProducts(): Promise<Product[]> {
     return this.productsService.getAllProductsServ();
   }
 
-  // @UseGuards(JwtAuthGuard)
   @Get(':id')
   async getProductDetails(@Param('id') id): Promise<Product> {
     return this.productsService.getProductProfileServ(id);
@@ -63,13 +61,13 @@ export class ProductsController {
   @Post()
   // we used dedicated decorators @Body()
   createProduct(@Body() createItemDto: CreateProdcutsDto): Promise<Product> {
-    return this.productsService.create(createItemDto);
+    return this.productsService.createProduct(createItemDto);
   }
 
   @UseGuards(JwtAuthGuard)
   @Delete(':id')
   deleteProduct(@Param('id') id): Promise<Product> {
-    return this.productsService.delete(id);
+    return this.productsService.deleteProduct(id);
   }
 
   @UseGuards(JwtAuthGuard)
@@ -78,7 +76,7 @@ export class ProductsController {
     @Body() updateItemDto: CreateProdcutsDto,
     @Param('id') id,
   ): Promise<Product> {
-    return this.productsService.update(id, updateItemDto);
+    return this.productsService.updateProduct(id, updateItemDto);
   }
 
   // @UseGuards(JwtAuthGuard)

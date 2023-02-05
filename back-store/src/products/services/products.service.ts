@@ -22,16 +22,16 @@ export class ProductsService {
     return await this.productModel.findOne({ _id: id });
   }
 
-  async create(product: Product): Promise<Product> {
+  async createProduct(product: Product): Promise<Product> {
     const newProduct = new this.productModel(product);
     return await newProduct.save();
   }
 
-  async delete(id: string): Promise<Product> {
+  async deleteProduct(id: string): Promise<Product> {
     return this.productModel.findByIdAndRemove(id);
   }
 
-  async update(id: string, product: Product): Promise<Product> {
+  async updateProduct(id: string, product: Product): Promise<Product> {
     return await this.productModel.findByIdAndUpdate(id, product, {
       new: true,
     });
