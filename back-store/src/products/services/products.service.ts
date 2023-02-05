@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 // import {ProductInterface} from './interfaces/products.interface'
-import { Product } from './schemas/products.schema';
+import { Product } from '../schemas/products.schema';
 
 // DB
 import { Model } from 'mongoose';
@@ -35,7 +35,5 @@ export class ProductsService {
     return await this.productModel.findByIdAndUpdate(id, product, {
       new: true,
     });
-
-   
   }
 }

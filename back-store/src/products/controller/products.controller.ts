@@ -12,12 +12,12 @@ import {
   Res,
   HttpStatus,
 } from '@nestjs/common';
-import { CreateProdcutsDto } from './dto/create-products';
-import { ProductsService } from './products.service';
-import { ProductInterface } from './interfaces/products.interface';
+import { CreateProdcutsDto } from '../dto/create-products';
+import { ProductsService } from '../services/products.service';
+import { ProductInterface } from '../interfaces/products.interface';
 // import { ProductInterface } from './interfaces/products.interface'
 
-import { Product } from './schemas/products.schema';
+import { Product } from '../schemas/products.schema';
 import { JwtAuthGuard } from 'src/login/auth/guards/jwt-auth.guard';
 import { Observable, of } from 'rxjs';
 
@@ -87,7 +87,7 @@ export class ProductsController {
   handleUploadFile(@Res() res, @UploadedFile() file: Express.Multer.File) {
     return res.status(HttpStatus.OK).json({
       success: true,
-      data: file.filename
+      data: file.filename,
     });
   }
 }
