@@ -4,6 +4,7 @@ import { Product } from '../schemas/products.schema';
 import { ProductsController } from '../controller/products.controller';
 import { ProductsService } from '../services/products.service';
 import { productsStub } from 'test/stubs/products.stub';
+import { CreateProdcutsDto } from '../dto/create-products';
 
 jest.mock('../__mocks__/products.service');
 describe('ProductsController', () => {
@@ -58,8 +59,8 @@ describe('getProductsById', () => {
 
 /*
  case 2: 
-   - make sure thate we are calling product by Id on the product service with product Id thet I have passed in 
-   - expect that we return a product
+   - make sure thate we are calling All product on the product service 
+   - expect that we return a products
 */
 
 describe('getAllProducts', () => {
@@ -75,6 +76,61 @@ describe('getAllProducts', () => {
 
     test('then it shuold call  productsService', () => {
       expect(productsService.getAllProductsServ).toHaveBeenCalled();
+    });
+    test('then it should return all products', () => {
+      expect(product).toEqual([productsStub()]);
+    });
+  });
+});
+
+/*
+ case 3: 
+   - make sure thate we are calling  createProduct  on the  createProduct service 
+   - expect that we return a create a product
+*/
+
+describe('createProduct', () => {
+  let productsController: ProductsController;
+  let productsService: ProductsService;
+  describe('when create a new product called ', () => {
+    let product: Product;
+    let createProdcutsDto: CreateProdcutsDto;
+
+    beforeEach(async () => {
+      createProdcutsDto = {
+        // id: productsStub().id
+        // name: productsStub().name,
+        // region: productsStub().region,
+        // description: productsStub().description,
+        // price: productsStub().price,
+        // image: productsStub().image,
+        id: '11223344',
+        name: 'hola',
+        region: 'region',
+        description: 'des',
+        price: 200,
+        image: 'img',
+      };
+
+      product = await productsController.createProduct(createProdcutsDto);
+    });
+
+    test('then it shuold call createProduct service ', () => {
+      expect(productsService.createProduct).toHaveBeenCalledWith(
+        createProdcutsDto.name,
+        createProdcutsDto.region,
+      );
+    });
+
+    test('then it should call productService', () => {
+      expect(productsService.createProduct).toHaveBeenCalledWith(
+        createProdcutsDto.name,
+        createProdcutsDto.region,
+      );
+    });
+
+    test('then it should return a product', () => {
+      expect(product).toEqual(productsStub());
     });
   });
 });
