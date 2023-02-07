@@ -34,6 +34,7 @@ describe('ProductsController', () => {
    - make sure thate we are calling product by Id on the product service with product Id thet I have passed in 
    - expect that we return a product
 */
+
 describe('getProductsById', () => {
   let productsController: ProductsController;
   let productsService: ProductsService;
@@ -176,3 +177,25 @@ describe('updateProduct', () => {
    - make sure thate we are calling  deleteProduct  on the  deleteProduct service 
    - expect that we return a delete product
 */
+
+describe('deleteProduct ', () => {
+  let productsController: ProductsController;
+  let productsService: ProductsService;
+
+  describe('when delete products is called', () => {
+    let product: Product;
+    jest.clearAllMocks();
+
+    beforeEach(async () => {
+      product = await productsController.deleteProduct(productsStub().id);
+    });
+
+    test('then it shuold call delete products Service', () => {
+      expect(productsService.deleteProduct).toBeCalledWith(productsStub().id);
+
+      test('then should delete the product and return ', () => {
+        expect(product).toEqual(productsStub());
+      });
+    });
+  });
+});
