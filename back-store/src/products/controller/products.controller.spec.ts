@@ -11,7 +11,7 @@ jest.mock('../__mocks__/products.service');
 describe('ProductsController', () => {
   let productsController: ProductsController;
   let productsService: ProductsService;
-
+  let product: Product;
   beforeEach(async () => {
     const module = await Test.createTestingModule({
       imports: [],
@@ -27,20 +27,14 @@ describe('ProductsController', () => {
   it('should be defined', () => {
     expect(productsController).toBeDefined();
   });
-});
 
-/*
- case 1: 
-   - make sure thate we are calling product by Id on the product service with product Id thet I have passed in 
-   - expect that we return a product
-*/
+  /*
+   case 1: 
+     - make sure thate we are calling product by Id on the product service with product Id thet I have passed in 
+     - expect that we return a product
+  */
 
-describe('getProductsById', () => {
-  let productsController: ProductsController;
-  let productsService: ProductsService;
-
-  describe('when get products is called', () => {
-    let product: Product;
+  describe('getProductsById', () => {
     jest.clearAllMocks();
 
     beforeEach(async () => {
@@ -57,19 +51,14 @@ describe('getProductsById', () => {
       });
     });
   });
-});
 
-/*
- case 2: 
-   - make sure thate we are calling All product on the product service 
-   - expect that we return a products
-*/
+  /*
+   case 2: 
+     - make sure thate we are calling All product on the product service 
+     - expect that we return a products
+  */
 
-describe('getAllProducts', () => {
-  let productsController: ProductsController;
-  let productsService: ProductsService;
-
-  describe('when get all products called', () => {
+  describe('getAllProducts', () => {
     let product: Product[];
 
     beforeEach(async () => {
@@ -83,19 +72,14 @@ describe('getAllProducts', () => {
       expect(product).toEqual([productsStub()]);
     });
   });
-});
 
-/*
- case 3: 
-   - make sure thate we are calling  createProduct  on the  createProduct service 
-   - expect that we return a create a product
-*/
+  /*
+   case 3: 
+     - make sure thate we are calling  createProduct  on the  createProduct service 
+     - expect that we return a create a product
+  */
 
-describe('createProduct', () => {
-  let productsController: ProductsController;
-  let productsService: ProductsService;
-  describe('when create a new product called ', () => {
-    let product: Product;
+  describe('createProduct', () => {
     let createProdcutsDto: CreateProdcutsDto;
 
     beforeEach(async () => {
@@ -128,19 +112,14 @@ describe('createProduct', () => {
       expect(product).toEqual(productsStub());
     });
   });
-});
 
-/*
- case 4: 
-   - make sure thate we are calling  updateProduct  on the  updateProduct service 
-   - expect that we return a updated product
-*/
+  /*
+   case 4: 
+     - make sure thate we are calling  updateProduct  on the  updateProduct service 
+     - expect that we return a updated product
+  */
 
-describe('updateProduct', () => {
-  let productsController: ProductsController;
-  let productsService: ProductsService;
-  describe('when update product called ', () => {
-    let product: Product;
+  describe('updateProduct', () => {
     let updateProdcutsDto: CreateProdcutsDto;
 
     beforeEach(async () => {
@@ -170,20 +149,14 @@ describe('updateProduct', () => {
       expect(product).toEqual(productsStub());
     });
   });
-});
 
-/*
- case 5: 
-   - make sure thate we are calling  deleteProduct  on the  deleteProduct service 
-   - expect that we return a delete product
-*/
+  /*
+   case 5: 
+     - make sure thate we are calling  deleteProduct  on the  deleteProduct service 
+     - expect that we return a delete product
+  */
 
-describe('deleteProduct ', () => {
-  let productsController: ProductsController;
-  let productsService: ProductsService;
-
-  describe('when delete products is called', () => {
-    let product: Product;
+  describe('deleteProduct ', () => {
     jest.clearAllMocks();
 
     beforeEach(async () => {

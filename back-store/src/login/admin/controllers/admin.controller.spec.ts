@@ -7,6 +7,8 @@ import { async } from 'rxjs';
 import { AdminStub } from 'test/stubs/signIn-signUp.stub';
 import { Controller } from '@nestjs/common';
 
+jest.mock('../__mocks__/admin.service');
+
 describe('AdminController', () => {
   let adminController: AdminController;
   let adminService: AdminService;
