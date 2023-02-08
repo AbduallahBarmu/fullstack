@@ -12,6 +12,8 @@ describe('ProductsController', () => {
   let productsController: ProductsController;
   let productsService: ProductsService;
   let product: Product;
+  let ProductsDto: CreateProdcutsDto;
+
   beforeEach(async () => {
     const module = await Test.createTestingModule({
       imports: [],
@@ -80,31 +82,25 @@ describe('ProductsController', () => {
   */
 
   describe('createProduct', () => {
-    let createProdcutsDto: CreateProdcutsDto;
+    jest.clearAllMocks();
 
     beforeEach(async () => {
-      createProdcutsDto = {
-        // id: productsStub().id
-        // name: productsStub().name,
-        // region: productsStub().region,
-        // description: productsStub().description,
-        // price: productsStub().price,
-        // image: productsStub().image,
-        id: '11223344',
-        name: 'hola',
-        region: 'region',
-        description: 'des',
-        price: 200,
-        image: 'img',
+      ProductsDto = {
+        id: productsStub().id,
+        name: productsStub().name,
+        region: productsStub().region,
+        description: productsStub().description,
+        price: productsStub().price,
+        image: productsStub().image,
       };
 
-      product = await productsController.createProduct(createProdcutsDto);
+      product = await productsController.createProduct(ProductsDto);
     });
 
     test('then it shuold call createProduct service ', () => {
       expect(productsService.createProduct).toHaveBeenCalledWith(
-        createProdcutsDto.name,
-        createProdcutsDto.region,
+        ProductsDto.name,
+        ProductsDto.region,
       );
     });
 
@@ -120,28 +116,26 @@ describe('ProductsController', () => {
   */
 
   describe('updateProduct', () => {
-    let updateProdcutsDto: CreateProdcutsDto;
-
     beforeEach(async () => {
-      updateProdcutsDto = {
-        id: '11223344',
-        name: 'hola',
-        region: 'region',
-        description: 'des',
-        price: 200,
-        image: 'img',
+      ProductsDto = {
+        id: productsStub().id,
+        name: productsStub().name,
+        region: productsStub().region,
+        description: productsStub().description,
+        price: productsStub().price,
+        image: productsStub().image,
       };
 
       product = await productsController.updateProduct(
-        updateProdcutsDto,
+        ProductsDto,
         productsStub().id,
       );
     });
 
     test('then it should call updateProduct service', () => {
       expect(productsService.createProduct).toHaveBeenCalledWith(
-        updateProdcutsDto.name,
-        updateProdcutsDto.region,
+        ProductsDto.name,
+        ProductsDto.region,
       );
     });
 

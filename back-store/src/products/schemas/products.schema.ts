@@ -8,13 +8,13 @@ export class Product {
   @Prop()
   id: string;
   @Prop()
-  name: String;
+  name: string;
   @Prop()
-  region: String;
+  region: string;
   @Prop()
-  price: Number;
+  price: number;
   @Prop()
-  description: String;
+  description: string;
   @Prop()
   image: string;
 }
