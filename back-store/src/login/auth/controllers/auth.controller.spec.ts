@@ -1,18 +1,24 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { AuthController } from '../controllers/auth.controller';
+import { AuthController } from './auth.controller';
+import { AuthService } from '../services/auth.service';
+import { getModelToken } from '@nestjs/mongoose';
+import { Admin } from '../../schemas/admin.schema';
+import { JwtService } from '@nestjs/jwt';
+import { AdminService } from '../../admin/services/admin.service';
 
 describe('AuthController', () => {
-  let controller: AuthController;
+  let authController: AuthController;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
       controllers: [AuthController],
+      providers: [AuthService, AdminService],
     }).compile();
 
-    controller = module.get<AuthController>(AuthController);
+    authController = module.get<AuthController>(AuthController);
   });
 
   it('should be defined', () => {
-    expect(controller).toBeDefined();
+    expect(authController).toBeDefined();
   });
 });

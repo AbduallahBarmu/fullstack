@@ -1,5 +1,5 @@
 <div class="item">
-  <mat-card>
+  <mat-card class="card-body">
     <img
       class="product-image"
       src="{{ data.image }}"
@@ -14,15 +14,14 @@
       <h4 class="product-region">{{ data.region }}</h4>
       <span class="product-price">{{ data.price }}$</span>
     </mat-card-actions>
+    <mat-card-actions>
+      <button
+        class="cart-btn"
+        color="primary"
+        (click)="addProductToCart(); addButton = false"
+      >
+        Add To Basket
+      </button>
+    </mat-card-actions>
   </mat-card>
-
-  <mat-card-actions>
-    <button
-      mat-raised-button
-      color="primary"
-      (click)="addProductToCart(); addButton = false"
-    >
-      Add To Basket
-    </button>
-  </mat-card-actions>
 </div>

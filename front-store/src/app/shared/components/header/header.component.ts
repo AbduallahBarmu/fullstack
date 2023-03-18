@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { AdminService } from 'src/app/admin/services/admin.service';
 import { AuthService } from 'src/app/auth/services/auth.service';
 @Component({
   selector: 'app-header',
@@ -10,15 +8,11 @@ import { AuthService } from 'src/app/auth/services/auth.service';
 export class HeaderComponent implements OnInit {
   //  isLogedIn:boolean = true
 
-  constructor(
-    private route: Router,
-    public authService: AuthService,
-    private adminService: AdminService
-  ) {}
+  constructor(public authService: AuthService) {}
 
   ngOnInit(): void {}
 
-  isLogedIn() {
+  isLogedIn(): boolean {
     // console.log('check token');
     if (localStorage.getItem('token')) {
       return true;

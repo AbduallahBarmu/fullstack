@@ -7,10 +7,13 @@ import { CartsService } from '../../services/carts.service';
 import { of } from 'rxjs';
 
 describe('CartComponent', () => {
+  // Arrange
   let component: CartComponent;
   let fixture: ComponentFixture<CartComponent>;
 
   beforeEach(async () => {
+    console.log('called before all specs are run ');
+
     const cartsServiceSpy = jasmine.createSpyObj<CartsService>([
       'getAllCartsServ',
       'deleteRecordServ',
@@ -34,13 +37,7 @@ describe('CartComponent', () => {
     await TestBed.configureTestingModule({
       imports: [HttpClientTestingModule],
       declarations: [CartComponent],
-      providers: [
-        cartsServiceSpy,
-        // {
-        //   provied: [CartComponent],
-        //   useValue: cartsServiceSpy,
-        // },
-      ],
+      providers: [cartsServiceSpy],
     }).compileComponents();
   });
 
@@ -50,8 +47,7 @@ describe('CartComponent', () => {
     fixture.detectChanges();
   });
 
-  // case1 : test get carts
-  it('should create', () => {
+  it('should create card', () => {
     expect(component).toBeTruthy();
   });
 
@@ -63,21 +59,24 @@ describe('CartComponent', () => {
     expect(component).toBeTruthy();
   }));
 
-  // case1: test cart length
-  it('should return Items number', () => {
-    expect(
-      fixture.debugElement.query(By.css('.product-length')).nativeElement
-        .textContent
-    ).toBe(4);
+  describe('card operations ', () => {
+    // case1: test cart length
+    it('should return products number in the card', () => {
+      expect(
+        fixture.debugElement.query(By.css('.product-length')).nativeElement
+          .textContent
+      ).toEqual(4);
+    });
+
+    // case2: test total amount
+
+    // case3: test increase amount
+    // it('incremens the amount', () => {});
+
+    // case4: test decrease amount
+
+    // case5: test delete cart
+
+    // case6: test clear cart page
   });
-
-  // case2: test total amount
-
-  // case3: test increase amount
-
-  // case4: test decrease amount
-
-  // case5: test delete cart
-
-  // case6: test clear cart page
 });

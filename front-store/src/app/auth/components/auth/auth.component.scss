@@ -1,6 +1,6 @@
 .form {
-  width: 500px;
-  margin: 60px auto 30px;
+  width: 600px;
+  margin: 80px auto 40px;
   padding: 15px;
   position: relative;
   background: #fffaf6;
@@ -10,6 +10,10 @@
     0 0 0 12px rgba(255, 255, 255, 0.4);
 }
 
+.form-body {
+  display: flex;
+  justify-content: space-around;
+}
 h1 {
   font-size: 30px;
   font-weight: bold;
@@ -18,25 +22,23 @@ h1 {
   border-bottom: 1px solid #ebe6e2;
   text-shadow: 0 2px 0 rgba(255, 255, 255, 0.8);
   box-shadow: 0 1px 0 rgba(255, 255, 255, 0.8);
- 
+
   .log-in,
   .sign-up {
-   display: inline-block;
-   text-transform: uppercase;
- }
- 
- .log-in {
-   color: #6c6763;
-   padding-right: 2px;
- }
- 
- .sign-up {
-   color: #d4a373;
-   padding-left: 2px;
- }
+    display: inline-block;
+    text-transform: uppercase;
+  }
+
+  .log-in {
+    color: #6c6763;
+    padding-right: 2px;
+  }
+
+  .sign-up {
+    color: #d4a373;
+    padding-left: 2px;
+  }
 }
-
-
 
 .row {
   margin-top: 10%;
@@ -50,61 +52,59 @@ h1 {
 }
 .btn {
   margin: 20px 10px;
-  background-color: #bac790; ;
-  border-color:#ccd5ae; ;
+  background-color: #bac790;
+  border-color: #ccd5ae;
   padding: 10px;
   color: #fffaf6;
- 
 }
 
 .icon {
-  display:inline-block;
+  display: inline-block;
 }
-label{
+label {
   display: inline-block;
 }
 
-.form-group{
-    width: 50%;
-    float: left;
-    padding-top: 15px;
-    border-top: 1px solid rgba(255,255,255,1);
+.form-group {
+  width: 50%;
+  float: left;
+  padding-top: 15px;
+  border-top: 1px solid rgba(255, 255, 255, 1);
 }
 
 .form-group:first-of-type {
-    padding-right: 5px;
+  padding-right: 5px;
 }
 
 .form-group:last-of-type {
-    padding-left: 5px;
+  padding-left: 5px;
 }
 
-
- label {
-    display: block;
-    padding: 0 0 5px 2px;
-    cursor: pointer;
-    text-transform: uppercase;
-    font-weight: 400;
-    text-shadow: 0 1px 0 rgba(255,255,255,0.8);
-    font-size: 18px;
+label {
+  display: block;
+  padding: 0 0 5px 2px;
+  cursor: pointer;
+  text-transform: uppercase;
+  font-weight: 400;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.8);
+  font-size: 18px;
 }
 
- label i {
-    margin-right: 25px; /* Gap between icon and text */
-    display: inline-block;
-    width: 10px;
+label i {
+  margin-right: 25px; /* Gap between icon and text */
+  display: inline-block;
+  width: 10px;
 }
 
-.form-control{
-    font-family: 'Lato', Calibri, Arial, sans-serif;
-    font-size: 20px;
-    font-weight: 200;
-    display: block;
-    width: 100%;
-    padding: 5px;
-    margin-bottom: 5px;
-    border: 2px solid #c0c7aa;
-    border-radius: 5px;
-    transition: all 0.3s ease-out;
+.form-control {
+  font-family: "Lato", Calibri, Arial, sans-serif;
+  font-size: 20px;
+  font-weight: 200;
+  display: block;
+  width: 100%;
+  padding: 5px;
+  margin-bottom: 5px;
+  border: 2px solid #c0c7aa;
+  border-radius: 5px;
+  transition: all 0.3s ease-out;
 }

@@ -54,7 +54,7 @@ module.exports = function(config) {
 
     // start these browsers
     // available browser launchers: https://www.npmjs.com/search?q=keywords:karma-launcher
-    browsers: ['Chrome'],
+    browsers: ['Chrome', 'Firefox'],
 
 
     // Continuous Integration mode
@@ -63,7 +63,21 @@ module.exports = function(config) {
 
     // Concurrency level
     // how many browser instances should be started simultaneously
-    concurrency: Infinity
+    concurrency: Infinity, 
+
+    // launchers.
+    // Each launcher needs to be loaded in the plugins array:
+    plugins: [
+      require('karma-jasmine'),
+      require('karma-chrome-launcher'),
+      require('karma-jasmine-html-reporter'),
+      require('karma-coverage'),
+      require('karma-junit-reporter'),
+      require('@angular-devkit/build-angular/plugins/karma'),
+    ],
+
+    reporters: ['progress', 'kjhtml', 'junit'],
+
   })
 }
 

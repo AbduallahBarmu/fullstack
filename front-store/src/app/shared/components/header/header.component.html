@@ -4,27 +4,19 @@
       <h2 class="logo" routerLink="/home">KAVA</h2>
       <ul>
         <li routerLink="/products" routerLinkActive="active">COFFEE</li>
-        <li
-          *ngIf="!isLogedIn()"
-          routerLink="/auth"
-          routerLinkActive="active"
-        >
+        <li *ngIf="!isLogedIn()" routerLink="/auth" routerLinkActive="active">
           LOGIN
         </li>
+        <li routerLink="/dashboard" *ngIf="isLogedIn()">DASHBOARD</li>
         <li
-        routerLink = "/dashboard"
-        *ngIf="isLogedIn()"
+          routerLink="/auth"
+          routerLinkActive="active"
+          *ngIf="isLogedIn()"
+          (click)="authService.logout()"
         >
-        DASHBOARD 
+          LOGOUT
         </li>
-        <li
-        routerLink="/auth"
-        routerLinkActive="active"
-        *ngIf="isLogedIn()" 
-        (click)="authService.logout()"
-      >
-        LOGOUT
-      </li>
+
         <li routerLink="/cart">
           <mat-icon class="cart-icon">shopping_cart</mat-icon>
         </li>

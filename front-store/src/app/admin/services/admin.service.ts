@@ -30,6 +30,7 @@ export class AdminService {
 
   deleteProductServ(id: string): Promise<void> {
     console.log('delete');
+    debugger;
     return firstValueFrom(
       this.http.delete<void>(environment.baseApi + 'products/' + id)
     );

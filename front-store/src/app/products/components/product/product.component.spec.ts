@@ -29,8 +29,8 @@ describe('ProductComponent', () => {
             name: 'product 1',
             region: 'region 1',
             price: 12,
-            image: 'img 1',
             description: 'Product 1 description',
+            image: 'img 1',
           },
         ],
       });

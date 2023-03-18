@@ -42,7 +42,6 @@ export class AddProductFormComponent {
   async addProduct(form: any) {
     if (this.image) {
       const res = await this.uploadFileService();
-      debugger;
       form.image = environment.baseApi + res.data;
     }
 

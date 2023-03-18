@@ -29,8 +29,8 @@ import { AdminGuardService } from './auth/services/admin-guard.service';
     FooterComponent,
   ],
   imports: [
-    HttpClientModule,
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule,
     ProductsModule,
     CartsModule,
